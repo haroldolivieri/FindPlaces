@@ -1,0 +1,24 @@
+// ------------------------------
+// #COLORS
+// ------------------------------
+
+// ------------------------------
+// #CUSTOM VARIABLES
+// ------------------------------
+
+// Main
+$bc-backgroundColor: white;
+
+// Structure
+$bc-maxWidth: 1280px;
+$bc-minWidth: 980px;
+$bc-mainPadding: 15px;
+
+// Panels
+$mainDivHeight: 550px;
+$titleBoxHeight: 105px;
+$baseMargin: 30px;
+
+$gridHeightSize: 135px;
+
+$topDistance: ($titleBoxHeight + $baseMargin * 2);

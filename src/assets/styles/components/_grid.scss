@@ -1,0 +1,11 @@
+section {
+    @include make-row();
+
+    .product {
+      background: red;
+      @include make-xs-column(12);
+      @include make-sm-column(6);
+      @include make-md-column(4);
+      @include make-lg-column(2);
+    }
+}
