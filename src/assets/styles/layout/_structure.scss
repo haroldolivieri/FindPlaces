@@ -1,89 +1,64 @@
-html, body {
-  min-height: 100% !important;
-  height: 100% !important;
-  background-color: transparent;
+@include respond-to(small) {}
+@include respond-to(medium) {}
+@include respond-to(large) {}
+
+section {
+  @include make-row();
+  @include clearfix;
 }
 
-body {
-  font-family: 'sf_display_bold' !important;
-}
 
-main {
-  margin: 0 auto;
-  padding-bottom: 100px;
-  width: 100%;
-  max-width: $bc-maxWidth;
-  min-width: $bc-minWidth;
-}
 
-* {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
-  // -webkit-touch-callout: none;
-  // -webkit-user-select: none;
-  // -khtml-user-select: none;
-  // -moz-user-select: none;
-  // -ms-user-select: none;
-  // user-select: none;
-  // -webkit-user-drag: none;
-  // -khtml-user-drag: none;
-  // -moz-user-drag: none;
-  // -o-user-drag: none;
-  // user-drag: none;
 
-  cursor: default;
-}
-
-input {
-  // -webkit-touch-callout: normal;
-  // -webkit-user-select: normal;
-  // -khtml-user-select: normal;
-  // -moz-user-select: normal;
-  // -ms-user-select: normal;
-  // user-select: normal;
-  // -webkit-user-drag: normal;
-  // -khtml-user-drag: normal;
-  // -moz-user-drag: normal;
-  // -o-user-drag: normal;
-  // user-drag: normal;
-}
-
-// [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-//   display: none !important;
+// html, body {
+//   min-height: 100% !important;
+//   height: 100% !important;
+//   background-color: transparent;
 // }
 
-img {
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-  user-drag: none;
-}
+// body {
+//   font-family: 'sf_display_bold' !important;
+// }
 
-input[type="text"] {
-  cursor: text;
-}
+// main {
+//   margin: 0 auto;
+//   padding-bottom: 100px;
+//   width: 100%;
+//   max-width: $bc-maxWidth;
+//   min-width: $bc-minWidth;
+// }
 
-input[type="button"] {
-  cursor: pointer;
-}
+// img {
+//   -webkit-user-drag: none;
+//   -khtml-user-drag: none;
+//   -moz-user-drag: none;
+//   -o-user-drag: none;
+//   user-drag: none;
+// }
 
-:focus {
-  outline: none !important;
-  border: none;
-  box-shadow: none;
-}
+// input[type="text"] {
+//   cursor: text;
+// }
 
-a {
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-    * {
-      cursor: pointer;
-    }
-    &:hover {
-        text-decoration: none;
-        color: none;
-    }
-}
+// input[type="button"] {
+//   cursor: pointer;
+// }
+
+// :focus {
+//   outline: none !important;
+//   border: none;
+//   box-shadow: none;
+// }
+
+// a {
+//     text-decoration: none;
+//     color: inherit;
+//     cursor: pointer;
+//     * {
+//       cursor: pointer;
+//     }
+//     &:hover {
+//         text-decoration: none;
+//         color: none;
+//     }
+// }
