@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TitleComponent implements OnInit {
 
-  title:string = "Título"
+  title : string = "Encontre lugares incríveis a partir das melhores experiências de outras pessoas"
 
   constructor() { }
 
