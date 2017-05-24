@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FirstStepComponent implements OnInit {
 
-  textHelper:string = "Cole a url ou jogue uma foto aqui que nós encontraremos locais semelhantes onde pessoas se sentiram como você já se sentiu :)"
+  // textHelper:string = "Cole a url ou jogue uma foto aqui que nós encontraremos locais semelhantes onde pessoas se sentiram como você já se sentiu :)"
+  inputPlaceholder:string = "Cole uma URL ou arraste sua foto para cá";
 
   constructor() { }
 

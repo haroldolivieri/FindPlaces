@@ -1,13 +1,12 @@
 <section class="firstStepComponent">
   <div>
     <form class="form-inline">
-      <input type="email" class="input-lg" placeholder="Digite a URL aqui">
+      <div>
+        <input type="email" class="input-lg finder-input" placeholder="{{inputPlaceholder}}">
+        <i class="glyphicon glyphicon-picture"></i>
+      </div>
       <button type="submit" class="btn btn-default hidden" (click)="sendURL()">Sign in</button>
     </form>
   </div>
-  <div>
-    <p class="text-helper">{{textHelper}}</p>
-  </div>
-
 </section>
 

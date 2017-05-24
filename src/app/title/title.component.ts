@@ -4,13 +4,13 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-title',
   templateUrl: './title.component.html'
 })
+
 export class TitleComponent implements OnInit {
 
-  title : string = "Encontre lugares incríveis a partir das melhores experiências de outras pessoas"
+  title : string = "Encontre lugares incríveis com base nas suas melhores experiências relacionadas as de outras pessoas"
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

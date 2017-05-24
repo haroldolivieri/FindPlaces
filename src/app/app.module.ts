@@ -9,6 +9,7 @@ import { TitleComponent } from './title/title.component';
 import { FirstStepComponent } from './first-step/first-step.component';
 import { SetupComponent } from './setup/setup.component';
 import { ResultComponent } from './result/result.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ResultComponent } from './result/result.component';
     FirstStepComponent,
     SetupComponent,
     ResultComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

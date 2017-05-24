@@ -1,24 +1,36 @@
 section.firstStepComponent  {
+
 	>div {
 		text-align: center;
 		@include make-xs-column(10);
-		@include make-xs-column-offset(1);
-		@include make-sm-column(10);
-		@include make-sm-column-offset(1);
-		@include make-md-column(8);
-		@include make-md-column-offset(2);
-		@include make-lg-column(6);
-		@include make-lg-column-offset(3);
+    @include make-xs-column-offset(1);
+    @include make-sm-column(10);
+    @include make-sm-column-offset(1);
+    @include make-md-column(10);
+    @include make-md-column-offset(1);
+    @include make-lg-column(10);
+    @include make-lg-column-offset(1);
 
-		input {
-			display: block;
-			width: 100%;
-			@include box-sizing(border-box);
+    @include respond-to(small)  { margin-top: 20px; }
+    @include respond-to(medium) { margin-top: 30px; }
+    @include respond-to(large)  { margin-top: 30px; }
+
+    form {
+      div {
+        position: relative; 
+        i.glyphicon {
+          color: white;
+          position: absolute;
+          right: 0px;
+          pointer-events: none;
+          padding: 10px;
+          font-size: 1.5em;
+          @include respond-to(small)  { font-size: 1.5em; }
+          @include respond-to(medium) { font-size: 2em; }
+          @include respond-to(large)  { font-size: 2em; }
+        }
+      }
     }
+	}
 
-    @include respond-to(small)  {  }
-    @include respond-to(medium) {  }
-    @include respond-to(large)  {  }
-	
-  }
 }
