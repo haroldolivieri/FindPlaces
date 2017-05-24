@@ -1,0 +1,24 @@
+section.firstStepComponent  {
+	>div {
+		text-align: center;
+		@include make-xs-column(10);
+		@include make-xs-column-offset(1);
+		@include make-sm-column(10);
+		@include make-sm-column-offset(1);
+		@include make-md-column(8);
+		@include make-md-column-offset(2);
+		@include make-lg-column(6);
+		@include make-lg-column-offset(3);
+
+		input {
+			display: block;
+			width: 100%;
+			@include box-sizing(border-box);
+    }
+
+    @include respond-to(small)  {  }
+    @include respond-to(medium) {  }
+    @include respond-to(large)  {  }
+	
+  }
+}

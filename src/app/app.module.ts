@@ -4,17 +4,25 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { TitleComponent } from './title-component/title-component.component';
+import { AlertModule } from 'ngx-bootstrap';
+import { TitleComponent } from './title/title.component';
+import { FirstStepComponent } from './first-step/first-step.component';
+import { SetupComponent } from './setup/setup.component';
+import { ResultComponent } from './result/result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TitleComponent
+    TitleComponent,
+    FirstStepComponent,
+    SetupComponent,
+    ResultComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AlertModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
