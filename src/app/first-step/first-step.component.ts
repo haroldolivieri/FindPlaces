@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-first-step',
-  templateUrl: './first-step.component.html',
-  styleUrls: ['./first-step.component.scss']
+  templateUrl: './first-step.component.html'
 })
 export class FirstStepComponent implements OnInit {
 
