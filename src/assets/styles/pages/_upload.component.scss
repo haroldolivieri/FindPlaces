@@ -1,7 +1,8 @@
-section.firstStepComponent  {
+section.uploadComponent  {
 
 	>div {
 		text-align: center;
+    margin-top: 40px;
 		@include make-xs-column(10);
     @include make-xs-column-offset(1);
     @include make-sm-column(10);
@@ -10,11 +11,7 @@ section.firstStepComponent  {
     @include make-md-column-offset(1);
     @include make-lg-column(10);
     @include make-lg-column-offset(1);
-    margin-top: 40px;
-
-    // @include respond-to(small)  { margin-top: 40px; }
     @include respond-to(medium) { margin-top: 75px; }
-    // @include respond-to(large)  { margin-top: 75px; }
 
     form {
       div {

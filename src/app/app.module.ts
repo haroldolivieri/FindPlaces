@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AlertModule } from 'ngx-bootstrap';
 import { TitleComponent } from './title/title.component';
-import { FirstStepComponent } from './first-step/first-step.component';
+import { UploadComponent } from './upload/upload.component';
 import { SetupComponent } from './setup/setup.component';
 import { ResultComponent } from './result/result.component';
 import { FooterComponent } from './footer/footer.component';
@@ -15,7 +15,7 @@ import { FooterComponent } from './footer/footer.component';
   declarations: [
     AppComponent,
     TitleComponent,
-    FirstStepComponent,
+    UploadComponent,
     SetupComponent,
     ResultComponent,
     FooterComponent,

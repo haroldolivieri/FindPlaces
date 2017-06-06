@@ -2,19 +2,20 @@ p.text-title {
   font-family: "sf_display_bold";
   color: white;
   line-height: 32px;
-  font-size: 24px;
-  @include respond-to(small)  { font-size: 26px; line-height: 32px; }
-  @include respond-to(medium) { font-size: 32px; line-height: 48px; }
-  @include respond-to(large)  { font-size: 48px; line-height: 60px; }
+  // font-size: 24px;
+  font-size: em(20);
+  @include respond-to(small)  { font-size: em(26); line-height: 32px; }
+  @include respond-to(medium) { font-size: em(32); line-height: 48px; }
+  @include respond-to(large)  { font-size: em(48); line-height: 60px; }
 }
 
 p.text-helper {
   color: white;
   font-family: "sf_display_regular";
   font-size: 12px;
-  @include respond-to(small)  { font-size: 14px; }
-  @include respond-to(medium) { font-size: 16px; }
-  @include respond-to(large)  { font-size: 18px; }
+  @include respond-to(small)  { font-size: em(14); }
+  @include respond-to(medium) { font-size: em(16); }
+  @include respond-to(large)  { font-size: em(18); }
 }
 
 @font-face {

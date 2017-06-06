@@ -26,9 +26,12 @@ html {
     align-items: center;
     padding: 44px 16px 44px 16px;
     margin-top: -20px;
-    // @include respond-to(small)  { margin-top: -20px; }
     @include respond-to(medium) { margin-top: -40px; }
-    // @include respond-to(large)  { margin-top: 75px; }
+
+    > div {
+        width: 100%;
+        margin: 0 auto;
+    }
 }
 
 body {
