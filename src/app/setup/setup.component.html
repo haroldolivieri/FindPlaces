@@ -1,11 +1,42 @@
 <section class="setupComponent">
 
-  <div class="setup-loading-block">
-    <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+  <div class="setup-loading-block" *ngIf="isLoading">
+    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+    <span class="sr-only">Loading...</span>
   </div>
 
-  <h1>
-    Se alguma dessas cores ou palavras não se encaixam em sua busca clique no x para removê-las e depois <strong>Encontrar locais!</strong>
-  </h1>
+  <div class="setup-loading-content" *ngIf="!isLoading">
+    <p class="text-helper">
+      Se alguma dessas cores ou palavras não se encaixam em sua busca clique no x para removê-las e depois <strong>Encontrar locais!</strong>
+    </p>
+
+    <section class="setup-colors">
+      <div *ngFor="let color of colors">
+          <div class="setup-tag"[style.backgroundColor]="color.hex">
+              <button
+              type="button"
+              (click)="deleteColor(color)"
+              class="pull-right">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              </button>
+          </div>
+      </div>
+    </section>
+
+    <section class="setup-keywords">
+      <div *ngFor="let keyword of keywords">
+          <div class="setup-tag">
+              <p>{{keyword.name}}</p>
+              <button
+              type="button"
+              (click)="deleteKeyword(keyword)"
+              class="pull-right">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              </button>
+          </div>
+      </div>
+    </section>
+
+  </div>
 
 </section>

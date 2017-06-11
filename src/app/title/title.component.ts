@@ -11,7 +11,10 @@ export class TitleComponent implements OnInit {
 
   // title : string = "Carregando informações da sua foto"
 
-  title : string = "Percebemos as seguintes características na sua foto. Você concorda?"
+  // title : string = "Percebemos as seguintes características na sua foto. Você concorda?"
+
+  title : string = "Estes são os locais que recomendamos para você!"
+  
 
   constructor() {}
 

@@ -1,3 +1,27 @@
+button.app-button {
+  background: none;
+  border: 0px transparent;
+  margin: 0px;
+  padding: 0px;
+}
+
+button.app-button-share {
+  background: none;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  font-family: "sf_display_light";
+  font-size: em(12);
+  color: white;
+  i {
+    vertical-align: middle;
+    @extend .fa;
+    @extend .fa-facebook-official;
+    font-size: 26px;
+    margin-right: 8px;
+  }
+
+}
+
 @include respond-to(small) {
 
 }

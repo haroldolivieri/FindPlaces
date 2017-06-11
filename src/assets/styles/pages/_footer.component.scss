@@ -1,7 +1,44 @@
-section.footerComponent  {
+.app-footer-space {
+    display: block;
+    height: 52px;
+    width: 100%;
+}
 
-    @include respond-to(small)  {  }
-    @include respond-to(medium) {  }
-    @include respond-to(large)  {  }
+section.footerComponent  {
+  position: fixed;
+  bottom: 0px;
+  background: rgba(0,0,0,1);
+  width: 100%;
+  padding: 16px;
+  border-top: 3px solid white;
+
+  >div.footerActions {
+    @include make-xs-column(12);
+    
+    button {
+      @extend .app-button;
+      font-size: 10px;
+      &:last-child {
+        @extend .pull-right;
+        font-size: 14px;
+      }
+      &:hover {
+        // font-weight: bolder;
+      }
+    }
+  }
+
+  >div.footerShareResult {
+    @include make-xs-column(12);
+    margin-bottom: 8px;
+
+    button {
+      @extend .app-button-share;
+    }
+  }
 
 }
+
+  // @include respond-to(small)  {  }
+  // @include respond-to(medium) {  }
+  // @include respond-to(large)  {  }

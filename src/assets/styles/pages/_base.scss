@@ -1,9 +1,9 @@
 html { 
   background: url(assets/img/background.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+//   -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   background-size: cover;
 }
 
 * {
@@ -13,6 +13,7 @@ html {
 .backgroundLayer {
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
+    z-index: -10;
     top: 0;
     left: 0;
     width: 100%;

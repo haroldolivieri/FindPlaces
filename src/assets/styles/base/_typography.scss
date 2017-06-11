@@ -1,9 +1,8 @@
 p.text-title {
   font-family: "sf_display_bold";
   color: white;
-  line-height: 32px;
-  // font-size: 24px;
   font-size: em(20);
+  line-height: 26px;
   @include respond-to(small)  { font-size: em(26); line-height: 32px; }
   @include respond-to(medium) { font-size: em(32); line-height: 48px; }
   @include respond-to(large)  { font-size: em(48); line-height: 60px; }
@@ -17,6 +16,45 @@ p.text-helper {
   @include respond-to(medium) { font-size: em(16); }
   @include respond-to(large)  { font-size: em(18); }
 }
+
+.setup-helper {
+  color: white;
+  font-family: "sf_display_regular";
+  font-size: 12px;
+  @include respond-to(small)  { font-size: em(14); }
+  @include respond-to(medium) { font-size: em(16); }
+  @include respond-to(large)  { font-size: em(18); }
+}
+
+.text-bold {
+  font-size: em(14);
+  color: white;
+  font-family: "sf_display_bold";
+  @include respond-to(small)  { font-size: em(16); }
+  @include respond-to(medium) { font-size: em(18); }
+  @include respond-to(large)  { font-size: em(20); }
+}
+
+.text-list-title {
+  font-size: em(10);
+  color: white;
+  font-family: "sf_display_semibold";
+  @include respond-to(small)  { font-size: em(16); }
+  @include respond-to(medium) { font-size: em(18); }
+  @include respond-to(large)  { font-size: em(20); }
+}
+
+.text-list {
+  font-size: em(10);
+  color: white;
+  @include respond-to(small)  { font-size: em(16); }
+  @include respond-to(medium) { font-size: em(18); }
+  @include respond-to(large)  { font-size: em(20); }
+}
+
+.text-list-title { font-family: "sf_display_semibold"; }
+.text-list-description { font-family: "sf_display_light"; font-size: em(9) }
+.text-list-button { font-family: "sf_display_bold"; }
 
 @font-face {
   font-family: 'sf_display_black';

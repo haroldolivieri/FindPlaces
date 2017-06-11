@@ -11,6 +11,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import "assets/styles/base/_transitions";
 @import "assets/styles/base/_typography";
 
+@import "assets/styles/vendor/_font-awesome";
+
 @import "assets/styles/components/_alert";
 @import "assets/styles/components/_buttons";
 @import "assets/styles/components/_footer";
@@ -22,6 +24,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import "assets/styles/pages/_title.component";
 @import "assets/styles/pages/_upload.component";
 @import "assets/styles/pages/_setup.component";
+@import "assets/styles/pages/_result.component";
 @import "assets/styles/pages/_footer.component";
 
 
