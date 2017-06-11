@@ -161,7 +161,7 @@
 
 @mixin respond-to($breakpoint) {
   @if $breakpoint == "small" {
-    @media (min-width: 767px) {
+    @media (min-width: 768px) {
       @content;
     }
   }

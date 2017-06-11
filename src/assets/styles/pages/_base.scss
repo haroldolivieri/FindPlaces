@@ -26,8 +26,8 @@ html {
     display: flex;
     align-items: center;
     padding: 44px 16px 44px 16px;
-    margin-top: -20px;
-    @include respond-to(medium) { margin-top: -40px; }
+    margin-top: -40px;
+    @include respond-to(small) { margin-top: -60px; }
 
     > div {
         width: 100%;

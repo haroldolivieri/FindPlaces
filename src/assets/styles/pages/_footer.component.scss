@@ -7,34 +7,51 @@
 section.footerComponent  {
   position: fixed;
   bottom: 0px;
+  left: 0px;
   background: rgba(0,0,0,1);
   width: 100%;
+  margin: 0px;
   padding: 16px;
   border-top: 3px solid white;
 
-  >div.footerActions {
+  >div {
     @include make-xs-column(12);
-    
-    button {
-      @extend .app-button;
-      font-size: 10px;
-      &:last-child {
-        @extend .pull-right;
-        font-size: 14px;
-      }
-      &:hover {
-        // font-weight: bolder;
+    padding: 0px;
+  
+    &.footerActions {
+      button {
+        @extend .app-button;
+        @extend .btn;
+        height: 22px;
+
+        &:first-child {
+          vertical-align: middle;
+          font-size: em(10);
+          @extend .visible-xs-inline;
+        }
+        &:last-child {
+          @extend .pull-right;
+          vertical-align: middle;
+          font-size: em(14);
+          font-weight: bolder;
+          @include respond-to(small) { 
+            font-size: em(32);
+            height: auto;
+            margin-bottom: 10px;
+          }
+        }
+        // &:hover { font-weight: bolder; }
       }
     }
-  }
 
-  >div.footerShareResult {
-    @include make-xs-column(12);
-    margin-bottom: 8px;
-
-    button {
-      @extend .app-button-share;
+    &.footerShareResult {
+      margin-bottom: 8px;
+      button { 
+        @extend .app-button-share;
+        @extend .visible-xs-block;
+      }
     }
+
   }
 
 }

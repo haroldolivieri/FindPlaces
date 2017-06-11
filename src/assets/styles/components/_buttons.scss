@@ -12,24 +12,18 @@ button.app-button-share {
   font-family: "sf_display_light";
   font-size: em(12);
   color: white;
+  @include respond-to(small) {
+    font-size: em(22);
+  }
   i {
     vertical-align: middle;
     @extend .fa;
     @extend .fa-facebook-official;
-    font-size: 26px;
+    font-size: em(26);
     margin-right: 8px;
+    @include respond-to(small) {
+      font-size: em(30);
+    }
   }
-
-}
-
-@include respond-to(small) {
-
-}
-
-@include respond-to(medium) {
-
-}
-
-@include respond-to(large) {
 
 }

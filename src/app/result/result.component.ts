@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultComponent implements OnInit {
 
-  isLoading: boolean = true;
+  isLoading: boolean = false;
+
+  contribute: string = "Contribua com esse projeto!";
 
   loadingMessages = [
     {text: "Reconhecimento de cena"},
