@@ -1,0 +1,15 @@
+input.finder-input {
+  background: transparent;
+  border: 0px transparent;
+  border-bottom: 1px solid white;
+  @include border-radius(0px);
+  @include placeholder(#9F9F9F);
+  color: white;
+  width: 100%;
+  font-size: 1em;
+  font-family: "sf_display_light";
+  
+  @include respond-to(small)  { font-size: 1.5em; }
+  @include respond-to(medium) { font-size: 1.75em; }
+  @include respond-to(large)  { font-size: 2em; }
+}

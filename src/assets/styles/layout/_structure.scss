@@ -1,0 +1,64 @@
+@include respond-to(small) {}
+@include respond-to(medium) {}
+@include respond-to(large) {}
+
+section {
+  @include make-row();
+  @include clearfix;
+}
+
+
+
+
+// html, body {
+//   min-height: 100% !important;
+//   height: 100% !important;
+//   background-color: transparent;
+// }
+
+// body {
+//   font-family: 'sf_display_bold' !important;
+// }
+
+// main {
+//   margin: 0 auto;
+//   padding-bottom: 100px;
+//   width: 100%;
+//   max-width: $bc-maxWidth;
+//   min-width: $bc-minWidth;
+// }
+
+// img {
+//   -webkit-user-drag: none;
+//   -khtml-user-drag: none;
+//   -moz-user-drag: none;
+//   -o-user-drag: none;
+//   user-drag: none;
+// }
+
+// input[type="text"] {
+//   cursor: text;
+// }
+
+// input[type="button"] {
+//   cursor: pointer;
+// }
+
+// :focus {
+//   outline: none !important;
+//   border: none;
+//   box-shadow: none;
+// }
+
+// a {
+//     text-decoration: none;
+//     color: inherit;
+//     cursor: pointer;
+//     * {
+//       cursor: pointer;
+//     }
+//     &:hover {
+//         text-decoration: none;
+//         color: none;
+//     }
+// }

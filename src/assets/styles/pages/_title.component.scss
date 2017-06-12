@@ -1,0 +1,37 @@
+section.titleComponent  {
+  >div {
+    text-align: center;
+    // margin-top: 16px;
+    // padding: 24px;
+
+    @include make-xs-column(8);
+    @include make-xs-column-offset(2);
+
+    @include make-sm-column(6);
+    @include make-sm-column-offset(3);
+
+    @include make-md-column(6);
+    @include make-md-column-offset(3);
+
+    @include make-lg-column(6);
+    @include make-lg-column-offset(3);
+  
+    @include respond-to(small)  {
+      padding: 16px;
+      margin-top: 16px;
+    }
+    @include respond-to(medium) {
+      padding: 24px;
+      margin-top: 16px;
+    }
+    @include respond-to(large)  {
+      padding: 48px;
+      margin-top: 16px;
+    }
+
+    // @include make-sm-column(12);
+    // @include make-md-column(12);
+    // @include make-lg-column(12);
+  }
+}
+

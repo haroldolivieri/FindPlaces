@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "assets/styles/utils/_functions";
+@import "assets/styles/utils/_mixins";
+@import "assets/styles/utils/_placeholders";
+@import "assets/styles/utils/_variables";
+
+@import "assets/styles/layout/_structure";
+
+@import "assets/styles/base/_transitions";
+@import "assets/styles/base/_typography";
+
+@import "assets/styles/vendor/_font-awesome";
+
+@import "assets/styles/components/_alert";
+@import "assets/styles/components/_buttons";
+@import "assets/styles/components/_footer";
+@import "assets/styles/components/_forms";
+@import "assets/styles/components/_grid";
+@import "assets/styles/components/_header";
+
+@import "assets/styles/pages/_base";
+@import "assets/styles/pages/_title.component";
+@import "assets/styles/pages/_upload.component";
+@import "assets/styles/pages/_setup.component";
+@import "assets/styles/pages/_result.component";
+@import "assets/styles/pages/_footer.component";
+
+
+@import "assets/styles/shame/_shame";

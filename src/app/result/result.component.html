@@ -1,0 +1,33 @@
+<section class="resultComponent">
+
+  <div class="result-loading-block" *ngIf="isLoading">
+    <div class="app-loading-bar">
+      <!--span.width == percentage-->
+      <span></span>
+    </div>
+    <p>Reconhecimento de cena</p>
+    <p>Criando paleta de cores</p>
+    <p>Encontrando sentimentos relacionados</p>
+  </div>
+
+  <div class="result-content" *ngIf="!isLoading">
+    <section *ngFor="let result of resultPlaces">
+      <div>
+        <img src="{{result.image}}" alt="imagem" contain>
+      </div>
+      <div>
+        <p>{{result.address}}</p>
+        <p>{{result.lastCheck}}</p>
+        <button>Quer saber mais sobre esse local?</button>
+      </div>
+    </section>
+  </div>
+
+  <div *ngIf="!hasResult" class="result-share">
+    <button type="button" class="btn" aria-label="Left Align"><i aria-hidden="true"></i> Compartilhar Resultado</button>
+    <div>
+      Gostou? <button>{{contribute}}</button>
+    </div>
+  </div>
+  
+</section>

@@ -1,0 +1,35 @@
+section.uploadComponent  {
+
+	>div {
+		text-align: center;
+    margin-top: 20px;
+		@include make-xs-column(10);
+    @include make-xs-column-offset(1);
+    @include make-sm-column(10);
+    @include make-sm-column-offset(1);
+    @include make-md-column(10);
+    @include make-md-column-offset(1);
+    @include make-lg-column(10);
+    @include make-lg-column-offset(1);
+    @include respond-to(medium) { margin-top: 75px; }
+
+    form {
+      div {
+        position: relative; 
+        i.glyphicon {
+          color: white;
+          position: absolute;
+          right: 0px;
+          pointer-events: none;
+          padding: 10px;
+          font-size: em(24);
+          // font-size: 1.5em;
+          @include respond-to(small)  { font-size: em(24); }
+          @include respond-to(medium) { font-size: em(32); }
+          @include respond-to(large)  { font-size: em(32); }
+        }
+      }
+    }
+	}
+
+}
