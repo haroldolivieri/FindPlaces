@@ -1,11 +1,14 @@
 <div class="backgroundLayer"></div>
 
-<div class="container-fluid vertical-center">
+<div ng2FileDrop (ng2FileDropHoverStart)="dragFileOverStart()" [ng2FileDropDisableStyles]="true"
+      (ng2FileDropHoverEnd)="dragFileOverEnd()" (ng2FileDropFileAccepted)="dragFileAccepted($event)"
+        (ng2FileDropFileRejected)="dragFileRejected($event)" [ng2FileDropSupportedFileTypes]="supportedFileTypes"
+                [ng2FileDropMaximumSizeBytes]="maximumFileSizeInBytes">
   <div>
     <app-title></app-title>
-    <app-upload></app-upload>
-    <app-setup></app-setup>
-    <app-result></app-result>
+    <app-upload [hidden]="currentStep != 0"></app-upload>
+    <app-setup [hidden]="currentStep != 1"></app-setup>
+    <app-result [hidden]="currentStep != 2"></app-result>
     <!--<span class="app-footer-space"></span>-->
     <app-footer></app-footer>
   </div>
