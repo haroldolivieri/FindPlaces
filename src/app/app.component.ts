@@ -13,8 +13,8 @@ import { Injectable } from '@angular/core';
 export class AppComponent {
   title = 'World!';
   currentStep = 0;
-  
-  private droppedImageSubject = new Subject<string>();
+
+  private droppedImageSubject = new Subject<any>();
   private validationImageSubject = new Subject<Boolean>();
 
   setStep(step) {
@@ -34,11 +34,16 @@ export class AppComponent {
     console.log("dragover")
   }
 
-  // File being dragged has been dropped and is valid
   private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile) {
     this.validationImageSubject.next(true);
-    this.droppedImageSubject.next();
-    this.droppedImageSubject.complete();
+
+    let fileReader = new FileReader();
+    fileReader.onload = () => {
+      this.droppedImageSubject.next(fileReader.result);
+      this.droppedImageSubject.complete();
+    };
+
+    fileReader.readAsDataURL(acceptedFile.file);
   }
 
   // File being dragged has been dropped and has been rejected

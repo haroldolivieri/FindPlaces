@@ -19,7 +19,7 @@ export class UploadComponent implements OnInit {
 
   constructor(private appComponent: AppComponent) {
     this.imageSubscription = this.appComponent.getDroppedImageObservable()
-    .subscribe(message => { });
+    .subscribe(base64 => { console.log(base64)});
 
     this.validationSubscription = this.appComponent.getValidationImageObservable()
     .map(isValid => {
