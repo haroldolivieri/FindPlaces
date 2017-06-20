@@ -1,13 +1,33 @@
 html { 
-  background: url(assets/img/background.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+//   background: url(assets/img/background.jpg) no-repeat center center fixed; 
+//   -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   background-size: cover;
+}
+
+body {
+    background-color: transparent !important;
 }
 
 * {
     color:white;
+}
+
+div.backgroundImage {
+    position: fixed;
+    z-index: -15;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    img {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        -o-object-fit: cover;
+    }
 }
 
 .backgroundLayer {
@@ -46,12 +66,45 @@ html {
     margin-top: -40px;
     @include respond-to(small) { margin-top: -60px; }
 
-    > div {
+    > div {    
         width: 100%;
         margin: 0 auto;
     }
 }
 
-body {
-    background-color: transparent !important;
+div.setup-loading-block { 
+    @include make-xs-column(12);
+    text-align: center;
+    i {
+        font-size: em(72) !important;
+        margin: 0 auto;
+        text-align: center;
+    }
 }
+
+div.result-loading-block {
+    @include make-xs-column(12);
+    text-align: center;
+    >div.app-loading-bar {
+        position: relative;
+        margin: 0 auto;
+        margin-bottom: 16px;
+        height: 35px;
+        width: 100px;
+        border: 2px solid white;
+        @include border-radius(5px);
+        span {
+            position: absolute;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(-45deg, white 25%, transparent 25%, transparent 50%, white 50%, white 75%, transparent 75%, transparent);
+            background-size: 14px 14px;
+        }
+    }
+
+    p {
+        @extend .text-helper;
+        margin: 0px;
+        }
+    }

@@ -6,14 +6,6 @@ section.setupComponent {
 		text-align: center;
     @include respond-to(medium) { margin-top: 35px; }
 
-    &.setup-loading-block { 
-      span.glyphicon-refresh-animate {
-        font-size: em(72) !important;
-        margin: 0 auto;
-        text-align: center;
-      }
-    }
-
     &.setup-loading-content {
       @include make-xs-column(12);
       @include make-sm-column(10);
