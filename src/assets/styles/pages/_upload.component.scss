@@ -3,8 +3,8 @@ section.uploadComponent  {
 	>div {
 		text-align: center;
     // margin-top: 20px;
-		@include make-xs-column(10);
-    @include make-xs-column-offset(1);
+		@include make-xs-column(12);
+    @include make-xs-column-offset(0);
     @include make-sm-column(10);
     @include make-sm-column-offset(1);
     @include make-md-column(10);
