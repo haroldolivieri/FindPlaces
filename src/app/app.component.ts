@@ -13,6 +13,7 @@ import { Injectable } from '@angular/core';
 export class AppComponent {
   title = 'World!';
   currentStep = 0;
+  dragging = false;
 
   private droppedImageSubject = new Subject<any>();
   private validationImageSubject = new Subject<string>();
@@ -26,12 +27,14 @@ export class AppComponent {
 
   // File being dragged has moved into the drop region
   private dragFileOverStart() {
-    console.log("dragStart")
+    console.log("dragStart");
+    this.dragging = true;
   }
 
   // File being dragged has moved out of the drop region
   private dragFileOverEnd() {
-    console.log("dragover")
+    console.log("dragover");
+    this.dragging = false;
   }
 
   private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile) {

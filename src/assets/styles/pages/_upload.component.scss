@@ -15,6 +15,7 @@ section.uploadComponent  {
 
     form {
       div {
+        z-index: 5;
         position: relative; 
         i.glyphicon {
           color: white;

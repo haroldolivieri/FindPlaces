@@ -11,6 +11,23 @@
     height: $height;
 }
 
+@mixin no-select {
+  // -webkit-touch-callout: none;
+  // -webkit-user-select: none;
+  // -khtml-user-select: none;
+  // -moz-user-select: none;
+  // -ms-user-select: none;
+  // user-select: none;
+}
+
+@mixin pointer-none {
+  -moz-pointer-events:none;
+  -webkit-pointer-events:none;
+  -o-pointer-events:none;
+  -ms-pointer-events:none;
+  pointer-events:none;
+}
+
 @mixin placeholder($color) {
     &::-webkit-input-placeholder {
         color: $color;
