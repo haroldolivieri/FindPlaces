@@ -6,8 +6,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SetupComponent implements OnInit {
 
-  isLoading: boolean = false;
-
   colors = [
     {hex: "#E7D3CC"},
     {hex: "#929C5F"},

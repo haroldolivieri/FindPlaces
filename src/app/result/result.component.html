@@ -1,16 +1,6 @@
 <section class="resultComponent">
 
-  <div class="result-loading-block" *ngIf="isLoading">
-    <div class="app-loading-bar">
-      <!--span.width == percentage-->
-      <span></span>
-    </div>
-    <p>Reconhecimento de cena</p>
-    <p>Criando paleta de cores</p>
-    <p>Encontrando sentimentos relacionados</p>
-  </div>
-
-  <div class="result-content" *ngIf="!isLoading">
+  <div class="result-content">
     <section *ngFor="let result of resultPlaces">
       <div>
         <img src="{{result.image}}" alt="imagem" contain>

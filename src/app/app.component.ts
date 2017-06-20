@@ -14,22 +14,31 @@ export class AppComponent {
   title = 'World!';
   currentStep = 0;
 
+  isLoadingSetup: boolean = false;
+  isLoadingResult: boolean = false;
+
   private droppedImageSubject = new Subject<any>();
   private validationImageSubject = new Subject<string>();
-
-  setStep(step) {
-    this.currentStep = step
-  }
+  private loadingSubject = new Subject<any>();
 
   private supportedFileTypes: string[] = ['image/png', 'image/jpeg'];
   private maximumFileSizeInBytes: number = 8e+6;
 
-  // File being dragged has moved into the drop region
+  constructor() {
+    this.loadingSubject.subscribe(loading => {
+      console.log(loading)
+      if (loading.type == "setup") {
+        this.isLoadingSetup = loading.visible
+      } else {
+        this.isLoadingResult = loading.visible
+      }
+    });
+  }
+
   private dragFileOverStart() {
     console.log("dragStart")
   }
 
-  // File being dragged has moved out of the drop region
   private dragFileOverEnd() {
     console.log("dragover")
   }
@@ -39,14 +48,14 @@ export class AppComponent {
 
     let fileReader = new FileReader();
     fileReader.onload = () => {
-      this.droppedImageSubject.next(fileReader.result);
+      var base64 = fileReader.result.split(',')[1];
+      this.droppedImageSubject.next(base64);
       this.droppedImageSubject.complete();
     };
 
     fileReader.readAsDataURL(acceptedFile.file);
   }
 
-  // File being dragged has been dropped and has been rejected
   private dragFileRejected(rejectedFile: Ng2FileDropRejectedFile) {
     this.validationImageSubject.next("Imagem inválida - Tente novamente com um *.png ou *jpeg de até 8MB");
   }
@@ -57,6 +66,14 @@ export class AppComponent {
 
   getValidationImageObservable() {
     return this.validationImageSubject.asObservable();
+  }
+
+  getLoadingSubject() : Subject<any> {
+    return this.loadingSubject;
+  }
+
+  setStep(step) {
+    this.currentStep = step;
   }
 }
 

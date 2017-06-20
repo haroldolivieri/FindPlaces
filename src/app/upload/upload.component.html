@@ -1,9 +1,10 @@
 <section class="uploadComponent">
-  <div>
+
+  <div *ngIf="!isLoading">
     <form class="form-inline">
 
       <div>
-        <input type="email" class="input-lg finder-input" placeholder="{{inputPlaceholder}}">
+        <input type="email" class="input-lg finder-input" placeholder="{{inputPlaceholder}}" [(ngModel)]="url" [ngModelOptions]="{standalone: true}">
         <i class="glyphicon glyphicon-picture"></i>
       </div>
       <p>{{validationMessage}}</p>
