@@ -15,7 +15,7 @@ export class AppComponent {
   currentStep = 0;
 
   private droppedImageSubject = new Subject<any>();
-  private validationImageSubject = new Subject<Boolean>();
+  private validationImageSubject = new Subject<string>();
 
   setStep(step) {
     this.currentStep = step
@@ -35,7 +35,7 @@ export class AppComponent {
   }
 
   private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile) {
-    this.validationImageSubject.next(true);
+    this.validationImageSubject.next("");
 
     let fileReader = new FileReader();
     fileReader.onload = () => {
@@ -48,7 +48,7 @@ export class AppComponent {
 
   // File being dragged has been dropped and has been rejected
   private dragFileRejected(rejectedFile: Ng2FileDropRejectedFile) {
-    this.validationImageSubject.next(false);
+    this.validationImageSubject.next("Imagem inválida - Tente novamente com um *.png ou *jpeg de até 8MB");
   }
 
   getDroppedImageObservable() {

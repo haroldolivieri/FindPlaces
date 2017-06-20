@@ -19,16 +19,10 @@ export class UploadComponent implements OnInit {
 
   constructor(private appComponent: AppComponent) {
     this.imageSubscription = this.appComponent.getDroppedImageObservable()
-    .subscribe(base64 => { console.log(base64)});
+    .subscribe(base64 => { console.log("Recebeu base64")});
 
     this.validationSubscription = this.appComponent.getValidationImageObservable()
-    .map(isValid => {
-      if (isValid) {
-        return ""
-      } else {
-        return "Imagem inválida - Tente novamente com um *.png ou *jpeg de até 8MB"
-      }
-    }).subscribe(message => { this.validationMessage = message});
+    .subscribe(message => { this.validationMessage = message});
   }
 
   ngOnDestroy() {
