@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ConceptService } from '../concept.service';
+import { Observable , Scheduler} from 'rxjs/Rx';
 
 @Component({
   selector: 'app-setup',
-  templateUrl: './setup.component.html'
+  templateUrl: './setup.component.html',
 })
+
 export class SetupComponent {
 
   colors = [
@@ -14,18 +17,19 @@ export class SetupComponent {
     {hex: "#223330"}
   ]
 
-  keywords = [
-    {name: "crianças"},
-    {name: "árvores"},
-    {name: "água"},
-    {name: "mar"},
-    {name: "alegria"}
-  ]
+  keywords = []
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  constructor(private conceptService : ConceptService) {
+    
+    this.conceptService.conceptObservable$
+    .observeOn(Scheduler.queue)
+    .subscribe(concepts => {
+      concepts.map(concept => {
+        this.keywords.push({name: concept.name});
+      });
+      console.log(this.keywords)
+    }, error => {console.log(error)});
+   }
 
   deleteColor(color) {
     console.log("Delete Color: " + color.hex);
@@ -35,4 +39,7 @@ export class SetupComponent {
     console.log("Delete Keyword: " + keyword.name);
   }
 
+  ngOnDestroy() {
+
+  }
 }

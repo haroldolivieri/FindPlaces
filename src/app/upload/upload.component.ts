@@ -4,6 +4,7 @@ import * as Clarifai from 'clarifai';
 import { Observable } from 'rxjs/Rx';
 import { Subscription } from 'rxjs/Rx';
 import { Subject } from 'rxjs/Rx';
+import { ConceptService } from '../concept.service';
 
 @Component({
   selector: 'app-upload',
@@ -15,14 +16,16 @@ export class UploadComponent{
   private imageSubscription: Subscription;
   private validationSubscription: Subscription;
   private clarifaiSubscription: Subscription;
-  private conceptsSubject = new Subject<any>();
 
   private validationMessage: string = ""
   private inputPlaceholder: string = "Cole uma URL ou arraste sua foto para cá";
   private url: string = ""
   private clarifai;
 
-  constructor(private appComponent: AppComponent, private ref: ChangeDetectorRef) {
+  constructor(private appComponent: AppComponent, 
+              private ref: ChangeDetectorRef,
+              private conceptService : ConceptService) {
+                
     this.imageSubscription = this.appComponent.getDroppedImageObservable()
       .subscribe(base64 => { this.predictByBytes(base64) });
 
@@ -40,27 +43,30 @@ export class UploadComponent{
   }
 
   private predictByUrl(url) {
-    console.log("recebeu url")
     this.predict(url)
   }
   
   private predictByBytes(base64) {
-    console.log("recebeu base 64")
     this.predict({ base64: base64 })
   }
 
   private predict(object) {
-    var observable : Observable<any> = Observable.fromPromise(this.clarifai.models.predict(Clarifai.GENERAL_MODEL, object));
+    var predictObservable : Observable<any> = Observable.fromPromise(this.clarifai.models.predict(Clarifai.GENERAL_MODEL, object));
     this.setLoading(true)
 
-    this.clarifaiSubscription = observable.subscribe(response => {
-      this.setLoading(false);
-      this.appComponent.setStep(1);
-      this.conceptsSubject.next(response.outputs[0].data.concepts);
-      this.conceptsSubject.complete();
+    this.clarifaiSubscription = predictObservable
+    .map(predicts => {
+      return predicts.outputs[0].data.concepts;
+    }).subscribe(concepts => {
+      console.log(concepts)
+      this.conceptService.publishData(concepts);
     }, error => { 
       this.setLoading(false);
       this.setValidationMessage("Erro ao buscar imagem :( Tente novamente");
+    }, () => {
+      this.setLoading(false);
+      this.appComponent.setStep(1);
+      this.conceptService.finish();
     });
   }
 
@@ -71,10 +77,6 @@ export class UploadComponent{
   private setValidationMessage(message) {
     this.validationMessage = message;
     this.ref.detectChanges();
-  }
-
-  private getConceptsObservable() {
-    this.conceptsSubject.asObservable();
   }
 
   ngOnDestroy() {
