@@ -2,7 +2,7 @@ section.uploadComponent  {
 
 	>div {
 		text-align: center;
-    margin-top: 20px;
+    // margin-top: 20px;
 		@include make-xs-column(10);
     @include make-xs-column-offset(1);
     @include make-sm-column(10);
@@ -17,6 +17,13 @@ section.uploadComponent  {
       div {
         z-index: 5;
         position: relative; 
+        input {
+          font-size: em(13);
+          text-align: left;
+          @include respond-to(small)  { font-size: em(18); }
+          @include respond-to(medium) { font-size: em(22); }
+          @include respond-to(large)  { font-size: em(26); }
+        }
         i.glyphicon {
           color: white;
           position: absolute;
@@ -29,6 +36,11 @@ section.uploadComponent  {
           @include respond-to(medium) { font-size: em(32); }
           @include respond-to(large)  { font-size: em(32); }
         }
+      }
+      p {
+        @extend .setup-helper;
+        background: rgba(255,0,0,0.15);
+        margin-top: 10px;
       }
     }
 	}
