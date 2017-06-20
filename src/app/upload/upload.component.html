@@ -7,6 +7,7 @@
         <input type="email" class="input-lg finder-input" placeholder="{{inputPlaceholder}}" [(ngModel)]="url" [ngModelOptions]="{standalone: true}">
         <i class="glyphicon glyphicon-picture"></i>
       </div>
+      
       <p>{{validationMessage}}</p>
 
       <button type="submit" class="btn btn-default hidden" (click)="sendURL()">SendURL</button>

@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-setup',
   templateUrl: './setup.component.html'
 })
-export class SetupComponent implements OnInit {
+export class SetupComponent {
 
   colors = [
     {hex: "#E7D3CC"},

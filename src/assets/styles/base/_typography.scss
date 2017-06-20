@@ -1,11 +1,11 @@
 p.text-title {
   font-family: "sf_display_bold";
   color: white;
-  font-size: em(20);
-  line-height: 26px;
+  font-size: em(16);
+  line-height: 22px;
   @include respond-to(small)  { font-size: em(26); line-height: 32px; }
   @include respond-to(medium) { font-size: em(32); line-height: 48px; }
-  @include respond-to(large)  { font-size: em(48); line-height: 60px; }
+  @include respond-to(large)  { font-size: em(48); line-height: 52px; }
 }
 
 p.text-helper {

@@ -73,6 +73,10 @@ export class UploadComponent{
     this.ref.detectChanges();
   }
 
+  private getConceptsObservable() {
+    this.conceptsSubject.asObservable();
+  }
+
   ngOnDestroy() {
     if (this.clarifaiSubscription) {
       this.clarifaiSubscription.unsubscribe();
