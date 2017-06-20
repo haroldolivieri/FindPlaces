@@ -3,12 +3,12 @@
 
   <div>
 
-    <div class="setup-loading-block" *ngIf="isLoadingSetup">
+    <div class="setup-loading-block" [hidden]="!isLoadingSetup">
       <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
       <span class="sr-only">Loading...</span>
     </div>
 
-    <div class="result-loading-block" *ngIf="isLoadingResult">
+    <div class="result-loading-block" [hidden]="!isLoadingResult">
       <div class="app-loading-bar">
         <!--span.width == percentage-->
         <span></span>
@@ -21,7 +21,7 @@
     <app-title *ngIf="!isLoadingSetup && !isLoadingResult"></app-title>
     <app-upload *ngIf="!isLoadingSetup && !isLoadingResult" [hidden]="currentStep != 0"></app-upload>
     <app-setup *ngIf="!isLoadingSetup && !isLoadingResult" [hidden]="currentStep != 1"></app-setup>
-    <app-result  *ngIf="!isLoadingSetup && !isLoadingResult" [hidden]="currentStep != 2"></app-result>
+    <app-result *ngIf="!isLoadingSetup && !isLoadingResult" [hidden]="currentStep != 2"></app-result>
     <!--<span class="app-footer-space"></span>-->
     <app-footer></app-footer>
   </div>

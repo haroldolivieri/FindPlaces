@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Injectable, ChangeDetectorRef } from '@angular/core';
 import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile } from 'ng2-file-drop';
 import { Subject } from 'rxjs/Subject';
-import { Injectable } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -20,29 +19,19 @@ export class AppComponent {
 
   private droppedImageSubject = new Subject<any>();
   private validationImageSubject = new Subject<string>();
-  private loadingSubject = new Subject<any>();
-
+  
   private supportedFileTypes: string[] = ['image/png', 'image/jpeg'];
   private maximumFileSizeInBytes: number = 8e+6;
 
-  constructor() {
-    this.loadingSubject.subscribe(loading => {
-      console.log(loading)
-      if (loading.type == "setup") {
-        this.isLoadingSetup = loading.visible
-      } else {
-        this.isLoadingResult = loading.visible
-      }
-    });
+  constructor(private ref: ChangeDetectorRef) {
+    setTimeout( () => this.ref.markForCheck(), 10);
   }
 
   private dragFileOverStart() {
-    console.log("dragStart");
     this.dragging = true;
   }
 
   private dragFileOverEnd() {
-    console.log("dragover");
     this.dragging = false;
   }
 
@@ -54,6 +43,7 @@ export class AppComponent {
       var base64 = fileReader.result.split(',')[1];
       this.droppedImageSubject.next(base64);
       this.droppedImageSubject.complete();
+      this.validationImageSubject.complete();
     };
 
     fileReader.readAsDataURL(acceptedFile.file);
@@ -71,12 +61,19 @@ export class AppComponent {
     return this.validationImageSubject.asObservable();
   }
 
-  getLoadingSubject() : Subject<any> {
-    return this.loadingSubject;
+  setLoading(loading) {
+    if (loading.type == "setup") {
+        this.isLoadingSetup = loading.visible
+      } else {
+        this.isLoadingResult = loading.visible
+      }
+
+    this.ref.detectChanges();
   }
 
   setStep(step) {
     this.currentStep = step;
+    this.ref.detectChanges();
   }
 }
 

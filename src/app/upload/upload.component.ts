@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AppComponent } from '../app.component';
 import * as Clarifai from 'clarifai';
 import { Observable } from 'rxjs/Rx';
@@ -10,10 +10,11 @@ import { Subject } from 'rxjs/Rx';
   templateUrl: './upload.component.html'
 })
 
-export class UploadComponent implements OnInit {
+export class UploadComponent{
 
   private imageSubscription: Subscription;
   private validationSubscription: Subscription;
+  private clarifaiSubscription: Subscription;
   private conceptsSubject = new Subject<any>();
 
   private validationMessage: string = ""
@@ -21,15 +22,12 @@ export class UploadComponent implements OnInit {
   private url: string = ""
   private clarifai;
 
-  ngOnInit() {
-  }
-
-  constructor(private appComponent: AppComponent) {
+  constructor(private appComponent: AppComponent, private ref: ChangeDetectorRef) {
     this.imageSubscription = this.appComponent.getDroppedImageObservable()
       .subscribe(base64 => { this.predictByBytes(base64) });
 
     this.validationSubscription = this.appComponent.getValidationImageObservable()
-      .subscribe(message => { this.validationMessage = message });
+      .subscribe(message => { this.setValidationMessage(message) });
 
     this.clarifai = new Clarifai.App(
       'iO89ClgM9SXqvORVQt8dc3KJLRKlrejwYGBEgGHO',
@@ -54,22 +52,32 @@ export class UploadComponent implements OnInit {
   private predict(object) {
     var observable : Observable<any> = Observable.fromPromise(this.clarifai.models.predict(Clarifai.GENERAL_MODEL, object));
     this.setLoading(true)
-    
-    observable.subscribe(response => {
-      this.setLoading(false)
+
+    this.clarifaiSubscription = observable.subscribe(response => {
+      this.setLoading(false);
+      this.appComponent.setStep(1);
       this.conceptsSubject.next(response.outputs[0].data.concepts);
       this.conceptsSubject.complete();
     }, error => { 
-      this.setLoading(false)
-      this.validationMessage = "Erro ao buscar imagem :( Tente novamente" 
+      this.setLoading(false);
+      this.setValidationMessage("Erro ao buscar imagem :( Tente novamente");
     });
   }
 
   setLoading(loading) {
-    this.appComponent.getLoadingSubject().next({type : "setup", visible : loading});
+    this.appComponent.setLoading({type : "setup", visible : loading});
+  }
+
+  private setValidationMessage(message) {
+    this.validationMessage = message;
+    this.ref.detectChanges();
   }
 
   ngOnDestroy() {
+    if (this.clarifaiSubscription) {
+      this.clarifaiSubscription.unsubscribe();
+    }
+  
     this.imageSubscription.unsubscribe();
     this.validationSubscription.unsubscribe();
   }
