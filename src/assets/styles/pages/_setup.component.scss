@@ -1,5 +1,6 @@
 section.setupComponent {
-  
+  // hack para ajustar background no canto esquerdo (por alguma razão os -15px da section deixa 1px de distância da borda)
+  margin-left: -16px;
   >div {
     @include make-xs-column(12);
 		text-align: center;
