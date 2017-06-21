@@ -27,7 +27,10 @@ section.footerComponent  {
         &:first-child {
           vertical-align: middle;
           font-size: em(10);
-          @extend .visible-xs-inline;
+          // @extend .visible-xs-inline;
+          @include respond-to(small)  { font-size: em(16); margin-top: 10px; }
+          @include respond-to(medium) { font-size: em(18); }
+          @include respond-to(large)  { font-size: em(18); }
         }
         &:last-child {
           @extend .pull-right;
@@ -40,7 +43,6 @@ section.footerComponent  {
             margin-bottom: 10px;
           }
         }
-        // &:hover { font-weight: bolder; }
       }
     }
 
@@ -48,7 +50,7 @@ section.footerComponent  {
       margin-bottom: 8px;
       button { 
         @extend .app-button-share;
-        @extend .visible-xs-block;
+        // @extend .visible-xs-block;
       }
     }
 

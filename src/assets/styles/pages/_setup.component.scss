@@ -1,11 +1,13 @@
 section.setupComponent {
-  margin-top: 44px;
-  
+  // hack para ajustar background no canto esquerdo (por alguma razão os -15px da section deixa 1px de distância da borda)
+  margin-left: -16px;
   >div {
     @include make-xs-column(12);
 		text-align: center;
-    @include respond-to(medium) { margin-top: 35px; }
-
+    @include respond-to(medium) { 
+      margin-top: 35px;
+    }
+    
     &.setup-loading-content {
       @include make-xs-column(12);
       @include make-sm-column(10);
@@ -13,9 +15,9 @@ section.setupComponent {
       @include make-lg-column(8);
       background: rgba(0,0,0,0.6);
       padding: 16px 8px 16px 16px;
-      @include respond-to(small) {  padding: 16px 8px 16px 32px; }
-      @include respond-to(medium) { padding: 16px 8px 16px 50px; }
-      @include respond-to(large) {  padding: 16px 8px 16px 50px; }
+      @include respond-to(small)    { padding: 16px 8px 16px 32px;  }
+      @include respond-to(medium)   { padding: 32px 32px 32px 50px; }
+      @include respond-to(large)    { padding: 32px 32px 32px 50px; }
       p {
         text-align: left;
       }
