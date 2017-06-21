@@ -34,12 +34,16 @@ export class SetupComponent {
   }
 
   deleteColor(index) {
-    this.colors.splice(index, 1);
+    if(this.keywords.length > 2) {
+      this.colors.splice(index, 1);
+      console.log(this.keywords)
+    }
   }
 
-  deleteKeyword() {
-    console.log("AAAA")
-    this.keywords = this.keywords.splice(1, 1);
-    console.log(this.keywords)
+  deleteKeyword(index) {
+    if(this.keywords.length > 2) {
+      this.keywords.splice(index, 1);
+      console.log(this.keywords)
+    }
   }
 }

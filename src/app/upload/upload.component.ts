@@ -3,6 +3,7 @@ import { AppComponent } from '../app.component';
 import * as Clarifai from 'clarifai';
 import { Observable, Subscription, Subject } from 'rxjs/Rx';
 import { ConceptService } from '../concept.service';
+import { TitleService } from '../title.service';
 
 @Component({
   selector: 'app-upload',
@@ -22,8 +23,9 @@ export class UploadComponent{
 
   constructor(private appComponent: AppComponent, 
               private conceptService : ConceptService,
-              private zone: NgZone) {
-                
+              private zone: NgZone, 
+              private titleService : TitleService) {
+
     this.imageSubscription = this.appComponent.getDroppedImageObservable()
       .subscribe(base64 => { this.predictByBytes(base64) });
 
@@ -37,7 +39,6 @@ export class UploadComponent{
   }
 
   sendURL() {
-    this.appComponent.selectedImage$ = this.url;
     this.predictByUrl(this.url)
   }
 
@@ -57,11 +58,13 @@ export class UploadComponent{
     .map(predicts => {
       return predicts.outputs[0].data.concepts;
     }).subscribe(concepts => {
+      this.appComponent.selectedImage$ = this.url;
       this.zone.run(() => this.conceptService.publishData(concepts));
     }, error => { 
       this.setLoading(false);
       this.setValidationMessage("Erro ao buscar imagem :( Tente novamente");
     }, () => {
+      this.titleService.publishData("Percebemos as seguintes características na sua foto. Você concorda?");
       this.zone.run(() => {
         this.setLoading(false);
         this.appComponent.setStep(1);

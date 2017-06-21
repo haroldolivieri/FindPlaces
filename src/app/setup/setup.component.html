@@ -22,12 +22,16 @@
       <div *ngFor="let keyword of keywords; let i = index">
           <div class="setup-tag">
               <p>{{keyword.name}}</p>
-              <button type="button" (click)="deleteKeyword()" class="pull-right">
+              <button type="button" (click)="deleteKeyword(i)" class="pull-right">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
               </button>
           </div>
       </div>
     </section>
+
+    <p class="text-helper">
+      Devem haver pelo menos 2 de cada ;)
+    </p>
 
   </div>
 

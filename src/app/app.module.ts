@@ -6,6 +6,7 @@ import { Ng2FileDropModule }  from 'ng2-file-drop';
 
 import { AppComponent } from './app.component';
 import { ConceptService } from './concept.service';
+import { TitleService } from './title.service';
 import { AlertModule } from 'ngx-bootstrap';
 import { TitleComponent } from './title/title.component';
 import { UploadComponent } from './upload/upload.component';
@@ -29,7 +30,7 @@ import { FooterComponent } from './footer/footer.component';
     AlertModule.forRoot(),
     Ng2FileDropModule
   ],
-  providers: [ConceptService],
+  providers: [ConceptService, TitleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

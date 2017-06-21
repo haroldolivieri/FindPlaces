@@ -1,23 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
+import { Subject, Observable} from 'rxjs/Rx';
+import { TitleService } from '../title.service';
 
 @Component({
   selector: 'app-title',
   templateUrl: './title.component.html'
 })
 
-export class TitleComponent implements OnInit {
+export class TitleComponent {
 
-  title : string = "Encontre lugares incríveis com base<br>nas suas melhores experiências<br>relacionadas as de outras pessoas"
-
-  // title : string = "Carregando informações da sua foto"
-
-  // title : string = "Percebemos as seguintes características na sua foto. Você concorda?"
+  private title : string
+  
+  constructor(private titleService : TitleService, private zone: NgZone) {
+    this.titleService.titleObservable$
+    .subscribe(title => this.zone.run(() => this.title = title));
+  }
 
   // title : string = "Estes são os locais que recomendamos para você!"
-  
-
-  constructor() {}
-
-  ngOnInit() {}
 
 }
