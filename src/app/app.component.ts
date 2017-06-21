@@ -13,6 +13,7 @@ export class AppComponent {
   title = 'World!';
   currentStep = 0;
   dragging = false;
+  selectedImage$ = "../assets/img/background.jpg";
 
   isLoadingSetup: boolean = false;
   isLoadingResult: boolean = false;
@@ -38,6 +39,7 @@ export class AppComponent {
 
     let fileReader = new FileReader();
     fileReader.onload = () => {
+      this.selectedImage$ = fileReader.result;
       var base64 = fileReader.result.split(',')[1];
       this.droppedImageSubject.next(base64);
       this.droppedImageSubject.complete();

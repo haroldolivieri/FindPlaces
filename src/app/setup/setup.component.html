@@ -2,12 +2,11 @@
 
   <div class="setup-loading-content">
     <p class="text-helper">
-      {{test}}
       Se alguma dessas cores ou palavras não se encaixam em sua busca clique no x para removê-las e depois <strong>Encontrar locais!</strong>
     </p>
 
     <section class="setup-colors">
-      <div *ngFor="let color of colors">
+      <div *ngFor="let color of colors; let i = index" [attr.data-index]="i">
           <div class="setup-tag"[style.backgroundColor]="color.hex">
               <button
               type="button"
@@ -20,13 +19,10 @@
     </section>
 
     <section class="setup-keywords">
-      <div *ngFor="let keyword of keywords">
+      <div *ngFor="let keyword of keywords; let i = index">
           <div class="setup-tag">
               <p>{{keyword.name}}</p>
-              <button
-              type="button"
-              (click)="deleteKeyword(keyword)"
-              class="pull-right">
+              <button type="button" (click)="deleteKeyword()" class="pull-right">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
               </button>
           </div>

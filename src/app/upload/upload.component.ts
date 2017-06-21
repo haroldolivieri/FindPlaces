@@ -37,6 +37,7 @@ export class UploadComponent{
   }
 
   sendURL() {
+    this.appComponent.selectedImage$ = this.url;
     this.predictByUrl(this.url)
   }
 

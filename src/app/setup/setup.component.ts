@@ -18,7 +18,6 @@ export class SetupComponent {
   ]
 
   keywords = []
-  test = "lalala"
 
   constructor(private conceptService : ConceptService, 
               private zone: NgZone, 
@@ -34,11 +33,13 @@ export class SetupComponent {
     }, error => {console.log(error)});
   }
 
-  deleteColor(color) {
-    console.log("Delete Color: " + color.hex);
+  deleteColor(index) {
+    this.colors.splice(index, 1);
   }
 
-  deleteKeyword(keyword) {
-    console.log("Delete Keyword: " + keyword.name);
+  deleteKeyword() {
+    console.log("AAAA")
+    this.keywords = this.keywords.splice(1, 1);
+    console.log(this.keywords)
   }
 }
