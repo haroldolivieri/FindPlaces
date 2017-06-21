@@ -14,6 +14,10 @@ body {
     color:white;
 }
 
+input, textarea, button, input:focus, textarea:focus, button:focus { outline: none !important;  }
+
+button:hover { cursor: pointer; text-decoration: underline !important; color: inherit !important; };
+
 div.backgroundImage {
     position: fixed;
     z-index: -15;
