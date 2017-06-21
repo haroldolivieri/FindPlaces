@@ -23,9 +23,7 @@ export class AppComponent {
   private supportedFileTypes: string[] = ['image/png', 'image/jpeg'];
   private maximumFileSizeInBytes: number = 8e+6;
 
-  constructor(private ref: ChangeDetectorRef) {
-    setTimeout( () => this.ref.markForCheck(), 10);
-  }
+  constructor(private ref: ChangeDetectorRef) {}
 
   private dragFileOverStart() {
     this.dragging = true;

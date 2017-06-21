@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, ChangeDetectorRef } from '@angular/core';
 import { ConceptService } from '../concept.service';
 import { Observable , Scheduler} from 'rxjs/Rx';
 
@@ -18,18 +18,21 @@ export class SetupComponent {
   ]
 
   keywords = []
+  test = "lalala"
 
-  constructor(private conceptService : ConceptService) {
-    
+  constructor(private conceptService : ConceptService, 
+              private zone: NgZone, 
+              private ref: ChangeDetectorRef) {
+  }
+
+  ngOnInit() {
     this.conceptService.conceptObservable$
-    .observeOn(Scheduler.queue)
-    .subscribe(concepts => {
-      concepts.map(concept => {
-        this.keywords.push({name: concept.name});
-      });
-      console.log(this.keywords)
+    .filter((concept : any) => concept.value > 0.8)
+    .take(8)
+    .subscribe(concept => {
+      this.keywords.push({name: concept.name});
     }, error => {console.log(error)});
-   }
+  }
 
   deleteColor(color) {
     console.log("Delete Color: " + color.hex);
@@ -37,9 +40,5 @@ export class SetupComponent {
 
   deleteKeyword(keyword) {
     console.log("Delete Keyword: " + keyword.name);
-  }
-
-  ngOnDestroy() {
-
   }
 }

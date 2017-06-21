@@ -1,9 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { AppComponent } from '../app.component';
 import * as Clarifai from 'clarifai';
-import { Observable } from 'rxjs/Rx';
-import { Subscription } from 'rxjs/Rx';
-import { Subject } from 'rxjs/Rx';
+import { Observable, Subscription, Subject } from 'rxjs/Rx';
 import { ConceptService } from '../concept.service';
 
 @Component({
@@ -23,8 +21,8 @@ export class UploadComponent{
   private clarifai;
 
   constructor(private appComponent: AppComponent, 
-              private ref: ChangeDetectorRef,
-              private conceptService : ConceptService) {
+              private conceptService : ConceptService,
+              private zone: NgZone) {
                 
     this.imageSubscription = this.appComponent.getDroppedImageObservable()
       .subscribe(base64 => { this.predictByBytes(base64) });
@@ -58,15 +56,15 @@ export class UploadComponent{
     .map(predicts => {
       return predicts.outputs[0].data.concepts;
     }).subscribe(concepts => {
-      console.log(concepts)
-      this.conceptService.publishData(concepts);
+      this.zone.run(() => this.conceptService.publishData(concepts));
     }, error => { 
       this.setLoading(false);
       this.setValidationMessage("Erro ao buscar imagem :( Tente novamente");
     }, () => {
-      this.setLoading(false);
-      this.appComponent.setStep(1);
-      this.conceptService.finish();
+      this.zone.run(() => {
+        this.setLoading(false);
+        this.appComponent.setStep(1);
+      });
     });
   }
 
@@ -75,8 +73,9 @@ export class UploadComponent{
   }
 
   private setValidationMessage(message) {
-    this.validationMessage = message;
-    this.ref.detectChanges();
+    this.zone.run(() => {
+      this.validationMessage = message;
+    });
   }
 
   ngOnDestroy() {

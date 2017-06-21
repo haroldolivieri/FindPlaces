@@ -1,20 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Subject }    from 'rxjs/Subject';
+import { Subject, Observable} from 'rxjs/Rx';
 
 
 @Injectable()
 export class ConceptService {
   private conceptSubject = new Subject<any>();  
+  conceptObservable$ = Observable.empty()
 
-  conceptObservable$ = this.conceptSubject.asObservable();
-
-  publishData(data: any) {
-    console.log("next caralho")
-    this.conceptSubject.next(data);
-  }
-
-  finish() {
-    console.log("fim")
-    this.conceptSubject.complete();
+  publishData(data: any[]) {
+    this.conceptObservable$ = Observable.from(data)
   }
 }
