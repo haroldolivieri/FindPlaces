@@ -35,7 +35,7 @@
 
 </div>
 
-<div class="dropLayer" ng2FileDrop [class.dragging]="dragging" (ng2FileDropHoverStart)="dragFileOverStart()" [ng2FileDropDisableStyles]="true"
+<div class="dropLayer" *ngIf="currentStep == 0" ng2FileDrop [class.dragging]="dragging" (ng2FileDropHoverStart)="dragFileOverStart()" [ng2FileDropDisableStyles]="true"
   (ng2FileDropHoverEnd)="dragFileOverEnd()" (ng2FileDropFileAccepted)="dragFileAccepted($event)" (ng2FileDropFileRejected)="dragFileRejected($event)"
   [ng2FileDropSupportedFileTypes]="supportedFileTypes" [ng2FileDropMaximumSizeBytes]="maximumFileSizeInBytes">
 </div>
