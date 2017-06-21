@@ -24,6 +24,14 @@ export class AppComponent {
   private supportedFileTypes: string[] = ['image/png', 'image/jpeg'];
   private maximumFileSizeInBytes: number = 8e+6;
 
+  // FOOTER //
+  hasResult: boolean = true;
+  // leftButton: string = "Contribua com esse projeto!"
+  leftButton: string = "Gostou? Contribua com esse projeto!"
+  // rightButton: string = "Encontrar Locais!"
+  rightButton: string = "Fazer Nova Busca!"
+  // FOOTER //
+
   constructor(private ref: ChangeDetectorRef) {}
 
   private dragFileOverStart() {

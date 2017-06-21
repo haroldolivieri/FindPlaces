@@ -30,8 +30,19 @@
       <app-upload *ngIf="!isLoadingSetup && !isLoadingResult" [hidden]="currentStep != 0"></app-upload>
       <app-setup *ngIf="!isLoadingSetup && !isLoadingResult" [hidden]="currentStep != 1"></app-setup>
       <app-result  *ngIf="!isLoadingSetup && !isLoadingResult" [hidden]="currentStep != 2"></app-result>
+
       <span class="app-footer-space"></span>
-      <app-footer></app-footer>
+
+      <section class="footerComponent">
+        <div *ngIf="hasResult" class="footerShareResult">
+          <button type="button" class="btn" aria-label="Left Align"><i aria-hidden="true"></i>Compartilhar Resultado</button>
+        </div>
+        <div class="footerActions">
+          <button type="button">{{leftButton}}</button>
+          <button type="button">{{rightButton}}</button>
+        </div>
+      </section>
+
     </div>
 
   </div>
