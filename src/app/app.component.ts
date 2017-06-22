@@ -59,7 +59,6 @@ export class AppComponent {
   }
 
   findPlaces() {
-    console.log("fins")
     this.findPlacesClickSubject.next();
   }
 

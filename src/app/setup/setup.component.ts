@@ -25,6 +25,8 @@ export class SetupComponent {
   private subscriptionClick : Subscription;
   private subscriptionConcept : Subscription;
   private subscriptionSearchImage : Subscription;
+  private clarifaiSubscription : Subscription;
+  private clarifai;
 
   constructor(private conceptService : ConceptService, 
               private searchImageService : SearchImageService,
@@ -32,24 +34,25 @@ export class SetupComponent {
               private ref: ChangeDetectorRef,
               private appComponent: AppComponent) {
 
-    this.subscriptionSearchImage = this.searchImageService.searchImageObservable$.subscribe(dataImage => this.dataImage = dataImage);
-    this.subscriptionClick = this.appComponent.findPlacesClickObservable$.subscribe(_ => this.findPlaces());
-  }
+    this.subscriptionSearchImage = this.searchImageService.searchImageObservable$
+    .subscribe(dataImage => this.dataImage = dataImage);
 
-  ngOnInit() {
-    
+    this.subscriptionClick = this.appComponent.findPlacesClickObservable$
+    .subscribe(_ => this.findPlaces());
 
     this.subscriptionConcept = this.conceptService.conceptObservable$
-    .filter((concept : any) => concept.value > 0.8)
-    .take(8)
-    .subscribe(concept => {
-      console.log(concept)
-      this.keywords.push({name: concept.name});
-    }, error => {console.log(error)});
+    .filter((concept : any) => concept.value > 0.8).take(8)
+    .subscribe(concept => this.keywords.push({name: concept.name}), error => console.log(error));
+
+    this.clarifai = new Clarifai.App(
+      'iO89ClgM9SXqvORVQt8dc3KJLRKlrejwYGBEgGHO',
+      'GLMRYd5y-PmSjLNXgLyOfCqz4eW347y_hh_mWlZi'
+    );
   }
 
   private findPlaces() {
-    console.log(this.dataImage)
+    var searchObservable = Observable.fromPromise(this.clarifai.inputs.search({ input: this.dataImage }));
+    this.clarifaiSubscription = searchObservable.subscribe(x => console.log(x), err => console.log(err));
   }
 
   deleteColor(index) {
