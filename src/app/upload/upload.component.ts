@@ -18,9 +18,9 @@ export class UploadComponent{
   private validationSubscription: Subscription;
   private clarifaiSubscription: Subscription;
 
-  private validationMessage: string = ""
-  private inputPlaceholder: string = "Cole uma URL ou arraste sua foto para cá";
-  private url: string = ""
+  validationMessage: string = ""
+  inputPlaceholder: string = "Cole uma URL ou arraste sua foto para cá";
+  url: string = ""
 
   constructor(private appComponent: AppComponent, 
               private conceptService : ConceptService,
