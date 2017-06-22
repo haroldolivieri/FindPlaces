@@ -19,8 +19,10 @@ export class UploadComponent{
   private clarifaiSubscription: Subscription;
 
   validationMessage: string = ""
-  inputPlaceholder: string = "Cole uma URL ou arraste sua foto para cá";
+  inputPlaceholder: string = "Cole uma URL de uma imagem ou arraste sua foto para cá";
   url: string = ""
+
+  inputClear: boolean = true;
 
   constructor(private appComponent: AppComponent, 
               private conceptService : ConceptService,
@@ -34,6 +36,21 @@ export class UploadComponent{
 
     this.validationSubscription = this.appComponent.getValidationImageObservable()
       .subscribe(message => { this.setValidationMessage(message) });
+
+  }
+
+  keyDownFunction(event) {
+  if(event.keyCode == 13) {
+    this.sendURL();
+  }
+}
+
+  valuechange(newValue) {
+    if (newValue == "") {
+      this.inputClear = true
+    } else {
+      this.inputClear = false
+    }
   }
 
   sendURL() {

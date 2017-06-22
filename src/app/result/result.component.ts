@@ -18,7 +18,7 @@ export class ResultComponent {
       var metadata = result.input.data.metadata;
       var index = this.monthsInEnglish.indexOf(metadata.date.month);
       var monthInPortuguese = this.monthsInPortuguese[index];
-      var place = {image: "https://lifecooler.com/files/registos/imagens/431244/266056.jpg", 
+      var place = {image: "http://tudosobrecachorros.com.br/wp-content/uploads/cachorro-independente.jpg", 
                   address : metadata.location.name, 
                   lastCheck : "Visitado em " + monthInPortuguese + " de " + metadata.date.year,
                   url : metadata.location.url};

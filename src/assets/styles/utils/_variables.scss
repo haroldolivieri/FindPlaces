@@ -7,18 +7,26 @@
 // ------------------------------
 
 // Main
-$bc-backgroundColor: white;
+$backgroundLayerOpacity: 0.65;
+$dropLayerDraggingOpacity: 0.75;
 
-// Structure
-$bc-maxWidth: 1280px;
-$bc-minWidth: 980px;
-$bc-mainPadding: 15px;
+// Typography
+// $text-title-fontSize-xs:          em(16);
+// $text-title-fontSize-sm:          em(26);
+// $text-title-fontSize-md:          em(32);
+// $text-title-fontSize-lg:          em(48);
+$text-title-fontSize-xs:          calc(0.85vw + 0.85vh + 2vmin);
+$text-title-fontSize-sm:          em(26);
+$text-title-fontSize-md:          em(32);
+$text-title-fontSize-lg:          em(48);
+
+$text-title-lineHeight-xs:        28px;
+$text-title-lineHeight-sm:        32px;
+$text-title-lineHeight-md:        48px;
+$text-title-lineHeight-lg:        52px;
+
+
+
+// calc(4vw + 4vh + 2vmin)
 
 // Panels
-$mainDivHeight: 550px;
-$titleBoxHeight: 105px;
-$baseMargin: 30px;
-
-$gridHeightSize: 135px;
-
-$topDistance: ($titleBoxHeight + $baseMargin * 2);

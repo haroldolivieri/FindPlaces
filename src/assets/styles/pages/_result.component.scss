@@ -6,7 +6,9 @@ section.resultComponent {
     &.result-content {
 
       @include make-xs-column(12);
-      @include make-sm-column(6);
+      @include make-sm-column(10);
+      @include make-md-column(8);
+      @include make-lg-column(6);
 
       section {
         background: rgba(0,0,0,0.7);
@@ -14,42 +16,44 @@ section.resultComponent {
         @include border-radius-right(5px);
         margin: 0px;
         margin-bottom: 10px;
+        min-height: 150px;
+        position: relative;
+        > img {
+          position: absolute;
+          height: 100%;
+          width: 110px;
+          @include respond-to(small)    { width: 200px; }
+          @include respond-to(medium)   { width: 200px; }
+          @include respond-to(large)    { width: 200px; }
+          object-fit: cover;
+          @include border-radius-left(5px);
+        }
         >div {
-          height: 81px;
-          @include respond-to(small) { height: 110px; };
-          &:first-child {
-            @include make-xs-column(4);
-            padding: 0px;
-            img {
-              width: 100%;
-              height: 81px;
-              @include respond-to(small) { height: 110px; };
-              object-fit: cover;
-              @include border-radius-left(5px);
+          display: inline-block;
+          text-align: left;
+          padding: 12px;
+          @include make-xs-column(12);
+          padding-left: 122px;
+          @include respond-to(small)    { padding-left: 212px; }
+          @include respond-to(medium)   { padding-left: 212px; }
+          @include respond-to(large)    { padding-left: 212px; }
+          vertical-align: top;
+          p {
+            @extend .text-list;
+            margin: 0px;
+            &:first-child {
+              @extend .text-list-title;
+            }
+            &:last-child {
+              @extend .text-list-description;
             }
           }
-          &:last-child {
-            @include make-xs-column(8);
+          button {
+            @extend .app-button;
+            @extend .text-list;
+            @extend .text-list-button;
+            margin-top: 18px;
             text-align: left;
-            padding: 12px;
-            
-            p {
-              @extend .text-list;
-              margin: 0px;
-              &:first-child {
-                @extend .text-list-title;
-              }
-              &:last-child {
-                @extend .text-list-description;
-              }
-            }
-            button {
-              @extend .app-button;
-              @extend .text-list;
-              @extend .text-list-button;
-              margin-top: 18px;
-              text-align: left;
-            }
           }
         }
       }

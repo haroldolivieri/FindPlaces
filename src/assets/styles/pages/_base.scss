@@ -11,7 +11,14 @@ body {
 }
 
 * {
-    color:white;
+    color: white;
+}
+
+a {
+    color: inherit;
+    &:hover {
+        color: inherit;
+    }
 }
 
 input, textarea, button, input:focus, textarea:focus, button:focus { outline: none !important;  }
@@ -35,7 +42,7 @@ div.backgroundImage {
 }
 
 .backgroundLayer {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, $backgroundLayerOpacity);
     position: fixed;
     z-index: -10;
     top: 0;
@@ -54,7 +61,7 @@ div.backgroundImage {
     opacity: 0;
     z-index: 4;
     &.dragging {
-        opacity: 0.75;
+        opacity: $dropLayerDraggingOpacity;
         z-index: 6;
         @include no-select;
         @include transition(opacity 1s .0s);

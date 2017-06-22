@@ -29,7 +29,7 @@ section.footerComponent  {
           vertical-align: middle;
           font-size: em(10);
           // @extend .visible-xs-inline;
-          @include respond-to(small)  { font-size: em(16); margin-top: 10px; }
+          @include respond-to(small)  { font-size: em(16); }
           @include respond-to(medium) { font-size: em(18); }
           @include respond-to(large)  { font-size: em(18); }
         }
@@ -41,7 +41,6 @@ section.footerComponent  {
           @include respond-to(small) { 
             font-size: em(32);
             height: auto;
-            margin-bottom: 10px;
           }
         }
       }
@@ -49,9 +48,9 @@ section.footerComponent  {
 
     &.footerShareResult {
       margin-bottom: 8px;
+      @extend .visible-xs-block;
       button { 
         @extend .app-button-share;
-        // @extend .visible-xs-block;
       }
     }
 

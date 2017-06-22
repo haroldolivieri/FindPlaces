@@ -1,16 +1,18 @@
 <section class="uploadComponent">
 
   <div>
-    <form class="form-inline">
+    <form class="form-inline" action="" (keydown)="keyDownFunction($event)">
 
       <div>
-        <input type="email" class="input-lg finder-input" placeholder="{{inputPlaceholder}}" [(ngModel)]="url" [ngModelOptions]="{standalone: true}">
-        <i class="glyphicon glyphicon-picture"></i>
+        <input type="email" autofocus class="input-lg finder-input" placeholder="{{inputPlaceholder}}" [(ngModel)]="url" [ngModelOptions]="{standalone: true}" (ngModelChange)="valuechange($event)">
+        <button type="button" (click)="sendURL()" >
+          <i class="glyphicon glyphicon-picture" *ngIf="inputClear"></i>
+          <i class="glyphicon glyphicon-arrow-right" *ngIf="!inputClear"></i>
+        </button>
       </div>
       
       <p>{{validationMessage}}</p>
-
-      <button type="submit" class="btn btn-default hidden" (click)="sendURL()">SendURL</button>
+      
     </form>
   </div>
 </section>

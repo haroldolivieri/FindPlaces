@@ -10,7 +10,6 @@ import { TitleService } from './title.service';
 import { APIKeyService } from './apikey.service';
 import { ResultService } from './result.service';
 import { SearchImageService } from './search-image.service';
-import { AlertModule } from 'ngx-bootstrap';
 import { TitleComponent } from './title/title.component';
 import { UploadComponent } from './upload/upload.component';
 import { SetupComponent } from './setup/setup.component';
@@ -29,7 +28,6 @@ import { ResultComponent } from './result/result.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AlertModule.forRoot(),
     Ng2FileDropModule
   ],
 

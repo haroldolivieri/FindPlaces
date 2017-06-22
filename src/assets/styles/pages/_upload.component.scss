@@ -14,27 +14,52 @@ section.uploadComponent  {
     @include respond-to(medium) { margin-top: 75px; }
 
     form {
+      margin-top: 15px;
+      @include respond-to(small)  { margin-top: 0px; }
       div {
         z-index: 5;
         position: relative; 
         input {
-          font-size: em(13);
+          padding: 0px;
+          padding-right: 40px;
           text-align: left;
+          height: 32px;
+          font-size: calc(0.85vw + 0.85vh + 1vmin);
           @include respond-to(small)  { font-size: em(18); }
-          @include respond-to(medium) { font-size: em(22); }
+          @include respond-to(medium) { font-size: em(22); height: 46px; }
           @include respond-to(large)  { font-size: em(26); }
         }
-        i.glyphicon {
-          color: white;
+        button {
           position: absolute;
+          top: 0px;
           right: 0px;
-          pointer-events: none;
-          padding: 10px;
-          font-size: em(24);
-          // font-size: 1.5em;
-          @include respond-to(small)  { font-size: em(24); }
-          @include respond-to(medium) { font-size: em(32); }
-          @include respond-to(large)  { font-size: em(32); }
+          width: 44px;
+          height: 44px;
+          padding: 0px;
+          top: -8px;
+          @include respond-to(medium) { top: -0px; }
+          text-align: right;
+          border: 0px solid transparent;
+          background: transparent;
+          &:hover, &:active, .active {
+            background: none;
+          }
+
+          i.glyphicon {
+            color: white;
+            pointer-events: none;
+            font-size: em(24);
+            @include respond-to(small)  { font-size: em(24); }
+            @include respond-to(medium) { font-size: em(32); padding-bottom: 0px; }
+            @include respond-to(large)  { font-size: em(32); }
+
+            &.glyphicon-arrow-right {
+              border: 1px solid white;
+              padding: 0px 6px;
+              @include border-radius(4px);
+              background: rgba(255,255,255,0.15);
+            }
+          }
         }
       }
       p {

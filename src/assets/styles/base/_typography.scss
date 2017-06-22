@@ -1,11 +1,11 @@
 p.text-title {
   font-family: "sf_display_bold";
   color: white;
-  font-size: em(16);
-  line-height: 22px;
-  @include respond-to(small)  { font-size: em(26); line-height: 32px; }
-  @include respond-to(medium) { font-size: em(32); line-height: 48px; }
-  @include respond-to(large)  { font-size: em(48); line-height: 52px; }
+  font-size: $text-title-fontSize-xs;
+  line-height: $text-title-lineHeight-xs;
+  @include respond-to(small)  { font-size: $text-title-fontSize-sm; line-height: $text-title-lineHeight-sm; }
+  @include respond-to(medium) { font-size: $text-title-fontSize-md; line-height: $text-title-lineHeight-md; }
+  @include respond-to(large)  { font-size: $text-title-fontSize-lg; line-height: $text-title-lineHeight-lg; }
 }
 
 p.text-helper {
@@ -27,28 +27,28 @@ p.text-helper {
 }
 
 .text-bold {
-  font-size: em(14);
+  font-size: em(16);
   color: white;
   font-family: "sf_display_bold";
-  @include respond-to(small)  { font-size: em(16); }
+  @include respond-to(small)  { font-size: em(18); }
   @include respond-to(medium) { font-size: em(18); }
   @include respond-to(large)  { font-size: em(20); }
 }
 
 .text-list-title {
-  font-size: em(10);
-  color: white;
   font-family: "sf_display_semibold";
+  font-size: em(16);
+  color: white;
   @include respond-to(small)  { font-size: em(16); }
-  @include respond-to(medium) { font-size: em(18); }
+  @include respond-to(medium) { font-size: em(20); }
   @include respond-to(large)  { font-size: em(20); }
 }
 
 .text-list {
-  font-size: em(10);
+  font-size: em(16);
   color: white;
   @include respond-to(small)  { font-size: em(16); }
-  @include respond-to(medium) { font-size: em(18); }
+  @include respond-to(medium) { font-size: em(20); }
   @include respond-to(large)  { font-size: em(20); }
 }
 

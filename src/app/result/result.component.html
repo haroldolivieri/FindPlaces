@@ -2,9 +2,7 @@
 
   <div class="result-content">
     <section *ngFor="let result of resultPlaces">
-      <div>
-        <img src="{{result.image}}" alt="imagem" contain>
-      </div>
+      <img src="{{result.image}}" alt="imagem">
       <div>
         <p>{{result.address}}</p>
         <p>{{result.lastCheck}}</p>
