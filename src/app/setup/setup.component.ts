@@ -30,7 +30,7 @@ export class SetupComponent {
 
   ngOnInit() {
     console.log("a")
-    this.subscriptionClick = this.appComponent.findPlacesClickObservable$.subscribe(x => console.log("clicked"))
+    this.subscriptionClick = this.appComponent.findPlacesClickObservable$.subscribe(_ => this.findPlaces())
 
     this.subscriptionConcept = this.conceptService.conceptObservable$
     .filter((concept : any) => concept.value > 0.8)
@@ -39,6 +39,11 @@ export class SetupComponent {
       console.log(concept)
       this.keywords.push({name: concept.name});
     }, error => {console.log(error)});
+  }
+
+  private findPlaces() {
+    console.log("here")
+    import * as Clarifai from 'clarifai';
   }
 
   deleteColor(index) {

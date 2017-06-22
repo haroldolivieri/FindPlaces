@@ -23,7 +23,7 @@ export class AppComponent {
   private droppedImageSubject = new Subject<any>();
   private validationImageSubject = new Subject<string>();
 
-  private findPlacesClickSubject = new Subject<any>()
+  private findPlacesClickSubject = new Subject<void>()
   findPlacesClickObservable$ = this.findPlacesClickSubject.asObservable();
   
   private supportedFileTypes: string[] = ['image/png', 'image/jpeg'];
