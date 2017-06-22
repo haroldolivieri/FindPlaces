@@ -38,7 +38,7 @@
           <button type="button" class="btn" aria-label="Left Align"><i aria-hidden="true"></i>Compartilhar</button>
         </div>
         <div class="footerActions">
-          <button type="button">{{leftButton}}</button>
+          <button type="button"><a [href]="urlWhatsYourPic" target="_blank">Gostou? Contribua com esse projeto!</a></button>
           <button type="button" *ngIf="currentStep == 0"></button>
           <button type="button" (click)="newSearch()" *ngIf="currentStep == 2">Fazer Nova Busca</button>
           <button type="button" (click)="findPlaces()" *ngIf="currentStep == 1">Encontrar Locais</button>

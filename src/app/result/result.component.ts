@@ -11,7 +11,7 @@ export class ResultComponent {
   private resultSubscription : Subscription;
   private monthsInEnglish = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   private monthsInPortuguese = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-  
+  urlWhatsYourPic = 'http://whatsyourpic.carioca.build';
   resultPlaces = []
   constructor(private resultService: ResultService) { 
     this.resultSubscription = this.resultService.resultObservable$.map((result : any) => {

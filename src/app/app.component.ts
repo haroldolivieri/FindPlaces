@@ -15,8 +15,8 @@ export class AppComponent {
   currentStep = 0;
   dragging = false;
   selectedImage$ = "../assets/img/background.jpg";
-  leftButton = "Gostou? Contribua com esse projeto!"
-  
+  urlWhatsYourPic = 'http://whatsyourpic.carioca.build';
+
   isLoadingSetup: boolean = false;
   isLoadingResult: boolean = false;
 
