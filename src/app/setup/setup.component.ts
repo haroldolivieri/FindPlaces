@@ -1,7 +1,9 @@
 import { Component, NgZone, ChangeDetectorRef } from '@angular/core';
 import { ConceptService } from '../concept.service';
-import { Observable , Scheduler} from 'rxjs/Rx';
+import { SearchImageService } from '../search-image.service';
+import { Observable , Subscription} from 'rxjs/Rx';
 import { AppComponent } from '../app.component';
+import * as Clarifai from 'clarifai';
 
 @Component({
   selector: 'app-setup',
@@ -19,18 +21,23 @@ export class SetupComponent {
   ];
 
   keywords = [];
-  private subscriptionClick;
-  private subscriptionConcept;
+  private dataImage;
+  private subscriptionClick : Subscription;
+  private subscriptionConcept : Subscription;
+  private subscriptionSearchImage : Subscription;
 
   constructor(private conceptService : ConceptService, 
+              private searchImageService : SearchImageService,
               private zone: NgZone, 
               private ref: ChangeDetectorRef,
               private appComponent: AppComponent) {
+
+    this.subscriptionSearchImage = this.searchImageService.searchImageObservable$.subscribe(dataImage => this.dataImage = dataImage);
+    this.subscriptionClick = this.appComponent.findPlacesClickObservable$.subscribe(_ => this.findPlaces());
   }
 
   ngOnInit() {
-    console.log("a")
-    this.subscriptionClick = this.appComponent.findPlacesClickObservable$.subscribe(_ => this.findPlaces())
+    
 
     this.subscriptionConcept = this.conceptService.conceptObservable$
     .filter((concept : any) => concept.value > 0.8)
@@ -42,8 +49,7 @@ export class SetupComponent {
   }
 
   private findPlaces() {
-    console.log("here")
-    import * as Clarifai from 'clarifai';
+    console.log(this.dataImage)
   }
 
   deleteColor(index) {
@@ -63,5 +69,6 @@ export class SetupComponent {
   ngOnDestroy() {
     this.subscriptionClick.unsubscribe();
     this.subscriptionConcept.unsubscribe();
+    this.subscriptionSearchImage.unsubscribe();
   }
 }

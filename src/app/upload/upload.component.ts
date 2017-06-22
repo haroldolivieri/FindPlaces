@@ -4,6 +4,7 @@ import * as Clarifai from 'clarifai';
 import { Observable, Subscription, Subject } from 'rxjs/Rx';
 import { ConceptService } from '../concept.service';
 import { TitleService } from '../title.service';
+import { SearchImageService } from '../search-image.service';
 
 @Component({
   selector: 'app-upload',
@@ -24,7 +25,8 @@ export class UploadComponent{
   constructor(private appComponent: AppComponent, 
               private conceptService : ConceptService,
               private zone: NgZone, 
-              private titleService : TitleService) {
+              private titleService : TitleService,
+              private searchImageService : SearchImageService) {
 
     this.imageSubscription = this.appComponent.getDroppedImageObservable()
       .subscribe(base64 => { this.predictByBytes(base64) });
@@ -43,7 +45,7 @@ export class UploadComponent{
   }
 
   private predictByUrl(url) {
-    this.predict(url)
+    this.predict({url : url })
   }
   
   private predictByBytes(base64) {
@@ -71,6 +73,7 @@ export class UploadComponent{
       this.zone.run(() => {
         this.setLoading(false);
         this.appComponent.setStep(1);
+        this.searchImageService.publishData(object);
       });
     });
   }
