@@ -9,7 +9,7 @@ import { TitleService } from '../title.service';
 
 export class TitleComponent {
 
-  private title : string
+  title : string
   
   constructor(private titleService : TitleService, private zone: NgZone) {
     this.titleService.titleObservable$
