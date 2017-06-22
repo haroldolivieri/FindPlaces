@@ -7,6 +7,7 @@ import { Ng2FileDropModule }  from 'ng2-file-drop';
 import { AppComponent } from './app.component';
 import { ConceptService } from './concept.service';
 import { TitleService } from './title.service';
+import { ResultService } from './result.service';
 import { SearchImageService } from './search-image.service';
 import { AlertModule } from 'ngx-bootstrap';
 import { TitleComponent } from './title/title.component';
@@ -22,6 +23,7 @@ import { ResultComponent } from './result/result.component';
     SetupComponent,
     ResultComponent
   ],
+  
   imports: [
     BrowserModule,
     FormsModule,
@@ -29,7 +31,8 @@ import { ResultComponent } from './result/result.component';
     AlertModule.forRoot(),
     Ng2FileDropModule
   ],
-  providers: [ConceptService, TitleService, SearchImageService],
+
+  providers: [ConceptService, TitleService, SearchImageService, ResultService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,7 +3,7 @@ import { Subject, Observable} from 'rxjs/Rx';
 
 @Injectable()
 export class ConceptService {
-  private conceptSubject = new Subject<any>();  
+  
   conceptObservable$ = Observable.empty()
 
   publishData(data: any[]) {

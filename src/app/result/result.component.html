@@ -8,7 +8,7 @@
       <div>
         <p>{{result.address}}</p>
         <p>{{result.lastCheck}}</p>
-        <button>Quer saber mais sobre esse local?</button>
+        <button><a *ngIf="result.url" [href]="result.url" target="_blank">Quer saber mais sobre esse local?</a></button>
       </div>
     </section>
   </div>

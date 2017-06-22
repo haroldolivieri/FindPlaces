@@ -63,6 +63,8 @@ export class AppComponent {
   }
 
   newSearch() {
+    this.isLoadingSetup = false;
+    this.isLoadingResult = false;
     this.currentStep = 0;
     this.selectedImage$ = "../assets/img/background.jpg";
     this.titleService.publishData("Encontre lugares incríveis com base<br>nas suas melhores experiências<br>relacionadas as de outras pessoas");

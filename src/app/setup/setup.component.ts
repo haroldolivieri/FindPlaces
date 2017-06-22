@@ -2,6 +2,7 @@ import { Component, NgZone, ChangeDetectorRef } from '@angular/core';
 import { ConceptService } from '../concept.service';
 import { SearchImageService } from '../search-image.service';
 import { TitleService } from '../title.service';
+import { ResultService } from '../result.service';
 import { Observable , Subscription} from 'rxjs/Rx';
 import { AppComponent } from '../app.component';
 import * as Clarifai from 'clarifai';
@@ -17,6 +18,7 @@ export class SetupComponent {
   keywords = [];
 
   private dataImage;
+  private isLoading = false;
   private subscriptionClick : Subscription;
   private subscriptionConcept : Subscription;
   private subscriptionSearchImage : Subscription;
@@ -28,7 +30,8 @@ export class SetupComponent {
               private zone: NgZone, 
               private titleService : TitleService,
               private ref: ChangeDetectorRef,
-              private appComponent: AppComponent) {
+              private appComponent: AppComponent,
+              private resultService: ResultService) {
 
     this.subscriptionSearchImage = this.searchImageService.searchImageObservable$
     .subscribe(dataImage => this.dataImage = dataImage);
@@ -44,30 +47,23 @@ export class SetupComponent {
       'bWWW2y_2tCbr79oNojh6rE1rlNo_h3-kJWL-vO5g',
       'H933Y_AqNqoWWRIZpAk2ckM-N-UQoY4sBYPzw0-x'
     );
-
   }
 
-  private monthsInEnglish = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  private monthsInPortuguese = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-  
   private findPlaces() {
-    
+
+    if (this.isLoading) {
+      return;
+    }
+
+    this.titleService.publishData("Procurando por lugares incríveis!");
     this.setLoading(true);
 
     var searchObservable = Observable.fromPromise(this.clarifai.inputs.search({ concept : this.keywords, input: this.dataImage }));
     this.clarifaiSubscription = 
-    searchObservable.flatMap((response : any) => {
-      return Observable.from(response.hits)
-    }).map((hit : any) => {
-      var metadata = hit.input.data.metadata;
-      var index = this.monthsInEnglish.indexOf(metadata.date.month);
-      var monthInPortuguese = this.monthsInPortuguese[index];
-      return {location : metadata.location, date : {month : monthInPortuguese, year : metadata.date.year }};
-    }).subscribe((memory : any) => {
-      console.log(memory)
+    searchObservable.subscribe((results : any) => {
+      this.zone.run(() => this.resultService.publishData(results.hits));
     }, err => {
-      this.appComponent.setStep(0);
-      this.setLoading(false);
+      this.appComponent.newSearch();
     }, () => {
       this.appComponent.setStep(2);
       this.titleService.publishData("Estes são os locais que recomendamos para você!");
@@ -76,6 +72,7 @@ export class SetupComponent {
   }
 
   setLoading(loading) {
+    this.isLoading = true;
     this.appComponent.setLoading({type : "setup", visible : loading});
   }
 

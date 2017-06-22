@@ -53,6 +53,8 @@ export class UploadComponent{
   }
 
   private predict(object) {
+    
+    this.titleService.publishData("Carregando informações da sua foto :)");
     this.setLoading(true);
 
     var predictObservable : Observable<any> = Observable.fromPromise(this.clarifai.models.predict(Clarifai.GENERAL_MODEL, object));
@@ -65,7 +67,7 @@ export class UploadComponent{
       }
       this.zone.run(() => this.conceptService.publishData(concepts));
     }, error => { 
-      this.setLoading(false);
+      this.appComponent.newSearch();
       this.setValidationMessage("Erro ao buscar imagem :( Tente novamente");
     }, () => {
       this.titleService.publishData("Percebemos as seguintes características na sua foto. Você concorda?");
@@ -82,9 +84,7 @@ export class UploadComponent{
   }
 
   private setValidationMessage(message) {
-    this.zone.run(() => {
-      this.validationMessage = message;
-    });
+    this.validationMessage = message;
   }
 
   ngOnDestroy() {
