@@ -20,7 +20,7 @@ export class UploadComponent{
   private validationMessage: string = ""
   private inputPlaceholder: string = "Cole uma URL ou arraste sua foto para cá";
   private url: string = ""
-  private clarifai;
+  private clarifai : Clarifai.App;
 
   constructor(private appComponent: AppComponent, 
               private conceptService : ConceptService,
@@ -53,9 +53,9 @@ export class UploadComponent{
   }
 
   private predict(object) {
-    var predictObservable : Observable<any> = Observable.fromPromise(this.clarifai.models.predict(Clarifai.GENERAL_MODEL, object));
-    this.setLoading(true)
+    this.setLoading(true);
 
+    var predictObservable : Observable<any> = Observable.fromPromise(this.clarifai.models.predict(Clarifai.GENERAL_MODEL, object));
     this.clarifaiSubscription = predictObservable
     .map(predicts => {
       return predicts.outputs[0].data.concepts;
@@ -63,7 +63,6 @@ export class UploadComponent{
       if (this.url) {
         this.appComponent.selectedImage$ = this.url;
       }
-    
       this.zone.run(() => this.conceptService.publishData(concepts));
     }, error => { 
       this.setLoading(false);
