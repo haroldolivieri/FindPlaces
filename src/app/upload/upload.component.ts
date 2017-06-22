@@ -1,10 +1,11 @@
 import { Component, NgZone } from '@angular/core';
 import { AppComponent } from '../app.component';
-import * as Clarifai from 'clarifai';
 import { Observable, Subscription, Subject } from 'rxjs/Rx';
 import { ConceptService } from '../concept.service';
 import { TitleService } from '../title.service';
 import { SearchImageService } from '../search-image.service';
+import { APIKeyService } from '../apikey.service';
+import * as Clarifai from 'clarifai';
 
 @Component({
   selector: 'app-upload',
@@ -20,24 +21,19 @@ export class UploadComponent{
   private validationMessage: string = ""
   private inputPlaceholder: string = "Cole uma URL ou arraste sua foto para cá";
   private url: string = ""
-  private clarifai : Clarifai.App;
 
   constructor(private appComponent: AppComponent, 
               private conceptService : ConceptService,
               private zone: NgZone, 
               private titleService : TitleService,
-              private searchImageService : SearchImageService) {
+              private searchImageService : SearchImageService,
+              private apiKey: APIKeyService) {
 
     this.imageSubscription = this.appComponent.getDroppedImageObservable()
       .subscribe(base64 => { this.predictByBytes(base64) });
 
     this.validationSubscription = this.appComponent.getValidationImageObservable()
       .subscribe(message => { this.setValidationMessage(message) });
-
-    this.clarifai = new Clarifai.App(
-      'iO89ClgM9SXqvORVQt8dc3KJLRKlrejwYGBEgGHO',
-      'GLMRYd5y-PmSjLNXgLyOfCqz4eW347y_hh_mWlZi'
-    );
   }
 
   sendURL() {
@@ -57,7 +53,7 @@ export class UploadComponent{
     this.titleService.publishData("Carregando informações da sua foto :)");
     this.setLoading(true);
 
-    var predictObservable : Observable<any> = Observable.fromPromise(this.clarifai.models.predict(Clarifai.GENERAL_MODEL, object));
+    var predictObservable : Observable<any> = Observable.fromPromise(this.apiKey.clarifai$.models.predict(Clarifai.GENERAL_MODEL, object));
     this.clarifaiSubscription = predictObservable
     .map(predicts => {
       return predicts.outputs[0].data.concepts;

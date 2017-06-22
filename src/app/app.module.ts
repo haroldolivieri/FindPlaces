@@ -7,6 +7,7 @@ import { Ng2FileDropModule }  from 'ng2-file-drop';
 import { AppComponent } from './app.component';
 import { ConceptService } from './concept.service';
 import { TitleService } from './title.service';
+import { APIKeyService } from './apikey.service';
 import { ResultService } from './result.service';
 import { SearchImageService } from './search-image.service';
 import { AlertModule } from 'ngx-bootstrap';
@@ -32,7 +33,7 @@ import { ResultComponent } from './result/result.component';
     Ng2FileDropModule
   ],
 
-  providers: [ConceptService, TitleService, SearchImageService, ResultService],
+  providers: [ConceptService, TitleService, SearchImageService, ResultService, APIKeyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

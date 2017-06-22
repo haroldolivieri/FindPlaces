@@ -3,6 +3,7 @@ import { ConceptService } from '../concept.service';
 import { SearchImageService } from '../search-image.service';
 import { TitleService } from '../title.service';
 import { ResultService } from '../result.service';
+import { APIKeyService } from '../apikey.service';
 import { Observable , Subscription} from 'rxjs/Rx';
 import { AppComponent } from '../app.component';
 import * as Clarifai from 'clarifai';
@@ -11,7 +12,7 @@ import * as Clarifai from 'clarifai';
   selector: 'app-setup',
   templateUrl: './setup.component.html',
 })
-
+ 
 export class SetupComponent {
 
   colors = [];
@@ -23,15 +24,15 @@ export class SetupComponent {
   private subscriptionConcept : Subscription;
   private subscriptionSearchImage : Subscription;
   private clarifaiSubscription : Subscription;
-  private clarifai : Clarifai.App;
-
+  
   constructor(private conceptService : ConceptService, 
               private searchImageService : SearchImageService,
               private zone: NgZone, 
               private titleService : TitleService,
               private ref: ChangeDetectorRef,
               private appComponent: AppComponent,
-              private resultService: ResultService) {
+              private resultService: ResultService,
+              private apiKey: APIKeyService) {
 
     this.subscriptionSearchImage = this.searchImageService.searchImageObservable$
     .subscribe(dataImage => this.dataImage = dataImage);
@@ -42,11 +43,6 @@ export class SetupComponent {
     this.subscriptionConcept = this.conceptService.conceptObservable$
     .filter((concept : any) => concept.value > 0.8).take(8)
     .subscribe(concept => this.keywords.push({name: concept.name}), error => console.log(error));
-
-    this.clarifai = new Clarifai.App(
-      'bWWW2y_2tCbr79oNojh6rE1rlNo_h3-kJWL-vO5g',
-      'H933Y_AqNqoWWRIZpAk2ckM-N-UQoY4sBYPzw0-x'
-    );
   }
 
   private findPlaces() {
@@ -58,7 +54,7 @@ export class SetupComponent {
     this.titleService.publishData("Procurando por lugares incríveis!");
     this.setLoading(true);
 
-    var searchObservable = Observable.fromPromise(this.clarifai.inputs.search({ concept : this.keywords, input: this.dataImage }));
+    var searchObservable = Observable.fromPromise(this.apiKey.clarifai$.inputs.search({ concept : this.keywords, input: this.dataImage }));
     this.clarifaiSubscription = 
     searchObservable.subscribe((results : any) => {
       this.zone.run(() => this.resultService.publishData(results.hits));
