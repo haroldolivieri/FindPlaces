@@ -58,7 +58,10 @@ export class UploadComponent{
     .map(predicts => {
       return predicts.outputs[0].data.concepts;
     }).subscribe(concepts => {
-      this.appComponent.selectedImage$ = this.url;
+      if (this.url) {
+        this.appComponent.selectedImage$ = this.url;
+      }
+    
       this.zone.run(() => this.conceptService.publishData(concepts));
     }, error => { 
       this.setLoading(false);

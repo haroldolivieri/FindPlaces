@@ -11,8 +11,8 @@ export class FooterComponent implements OnInit {
   // leftButton: string = "Contribua com esse projeto!"
   leftButton: string = "Gostou? Contribua com esse projeto!"
 
-  // rightButton: string = "Encontrar Locais!"
-  rightButton: string = "Fazer Nova Busca!"
+  rightButton: string = "Encontrar Locais!"
+  //rightButton: string = "Fazer Nova Busca!"
 
   constructor() { }
 
