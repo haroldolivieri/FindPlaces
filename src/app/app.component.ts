@@ -1,6 +1,7 @@
 import { Component, Injectable, ChangeDetectorRef } from '@angular/core';
 import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile } from 'ng2-file-drop';
 import { Subject } from 'rxjs/Subject';
+import { TitleService } from './title.service';
 
 @Component({
   selector: 'app-root',
@@ -14,17 +15,21 @@ export class AppComponent {
   currentStep = 0;
   dragging = false;
   selectedImage$ = "../assets/img/background.jpg";
-
+  leftButton = "Gostou? Contribua com esse projeto!"
+  
   isLoadingSetup: boolean = false;
   isLoadingResult: boolean = false;
 
   private droppedImageSubject = new Subject<any>();
   private validationImageSubject = new Subject<string>();
+
+  private findPlacesClickSubject = new Subject<any>()
+  findPlacesClickObservable$ = this.findPlacesClickSubject.asObservable();
   
   private supportedFileTypes: string[] = ['image/png', 'image/jpeg'];
   private maximumFileSizeInBytes: number = 8e+6;
 
-  constructor(private ref: ChangeDetectorRef) {}
+  constructor(private ref: ChangeDetectorRef, private titleService : TitleService) {}
 
   private dragFileOverStart() {
     this.dragging = true;
@@ -51,6 +56,17 @@ export class AppComponent {
 
   private dragFileRejected(rejectedFile: Ng2FileDropRejectedFile) {
     this.validationImageSubject.next("Imagem inválida - Tente novamente com um *.png ou *jpeg de até 8MB");
+  }
+
+  findPlaces() {
+    console.log("fins")
+    this.findPlacesClickSubject.next();
+  }
+
+  newSearch() {
+    this.currentStep = 0;
+    this.selectedImage$ = "../assets/img/background.jpg";
+    this.titleService.publishData("Encontre lugares incríveis com base<br>nas suas melhores experiências<br>relacionadas as de outras pessoas");
   }
 
   getDroppedImageObservable() {

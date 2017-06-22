@@ -15,7 +15,4 @@ export class TitleComponent {
     this.titleService.titleObservable$
     .subscribe(title => this.zone.run(() => this.title = title));
   }
-
-  // title : string = "Estes são os locais que recomendamos para você!"
-
 }

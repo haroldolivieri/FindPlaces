@@ -12,7 +12,6 @@ import { TitleComponent } from './title/title.component';
 import { UploadComponent } from './upload/upload.component';
 import { SetupComponent } from './setup/setup.component';
 import { ResultComponent } from './result/result.component';
-import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +19,7 @@ import { FooterComponent } from './footer/footer.component';
     TitleComponent,
     UploadComponent,
     SetupComponent,
-    ResultComponent,
-    FooterComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

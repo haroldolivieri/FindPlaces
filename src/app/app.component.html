@@ -30,10 +30,22 @@
       <app-upload *ngIf="!isLoadingSetup && !isLoadingResult" [hidden]="currentStep != 0"></app-upload>
       <app-setup *ngIf="!isLoadingSetup && !isLoadingResult" [hidden]="currentStep != 1"></app-setup>
       <app-result  *ngIf="!isLoadingSetup && !isLoadingResult" [hidden]="currentStep != 2"></app-result>
-      <span class="app-footer-space"></span>
-      <app-footer></app-footer>
-    </div>
 
+      <span class="app-footer-space"></span>
+
+      <section class="footerComponent">
+        <div class="footerShareResult">
+          <button type="button" class="btn" aria-label="Left Align"><i aria-hidden="true"></i>Compartilhar</button>
+        </div>
+        <div class="footerActions">
+          <button type="button">{{leftButton}}</button>
+          <button type="button" *ngIf="currentStep == 0"></button>
+          <button type="button" (click)="newSearch()" *ngIf="currentStep == 2">Fazer Nova Busca</button>
+          <button type="button" (click)="findPlaces()" *ngIf="currentStep == 1">Encontrar Locais</button>
+        </div>
+      </section>
+
+    </div>
   </div>
 
 </div>
