@@ -2,7 +2,7 @@
 
   <div class="result-content">
     <section *ngFor="let result of resultPlaces">
-      <img src="{{result.image}}" alt="imagem">
+      <img onError="this.src='https://www.gravatar.com/avatar/a?s=300&d=identicon&r=PG';" src="{{result.image}}" alt="imagem">
       <div>
         <p>{{result.address}}</p>
         <p>{{result.lastCheck}}</p>
