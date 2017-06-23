@@ -12,6 +12,7 @@ import * as Clarifai from 'clarifai';
   templateUrl: './upload.component.html'
 })
 
+
 export class UploadComponent{
 
   private imageSubscription: Subscription;

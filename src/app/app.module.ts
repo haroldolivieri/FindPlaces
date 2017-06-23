@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Ng2FileDropModule }  from 'ng2-file-drop';
+import { CeiboShare } from 'ng2-social-share';
 
 import { AppComponent } from './app.component';
 import { ConceptService } from './concept.service';
@@ -21,7 +22,8 @@ import { ResultComponent } from './result/result.component';
     TitleComponent,
     UploadComponent,
     SetupComponent,
-    ResultComponent
+    ResultComponent,
+    CeiboShare
   ],
   
   imports: [

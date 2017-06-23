@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ResultService } from '../result.service';
 import { Observable , Subscription} from 'rxjs/Rx';
+import { CeiboShare } from 'ng2-social-share';
 
 @Component({
   selector: 'app-result',
@@ -11,7 +12,10 @@ export class ResultComponent {
   private resultSubscription : Subscription;
   private monthsInEnglish = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   private monthsInPortuguese = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  
   urlWhatsYourPic = 'http://whatsyourpic.carioca.build';
+  public repoUrl = 'whatsyourplace.carioca.build';
+  
   resultPlaces = []
   constructor(private resultService: ResultService) { 
     this.resultSubscription = this.resultService.resultObservable$.map((result : any) => {
