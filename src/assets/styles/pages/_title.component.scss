@@ -17,6 +17,28 @@ div.app-content {
   width: 100%;
 }
 
+.giveMeSpace {
+  div {
+    p { 
+      padding-top: 10vh !important;
+    }
+  }
+}
+
+.paintMe {
+  > div {
+    background: rgba(0,0,0,0.75);
+
+    p {
+      padding-top: 15px;
+      @include respond-to(small)     { padding-top: 30px; }
+      @include respond-to(medium)    { padding-top: 30px; }
+      @include respond-to(large)     { padding-top: 0px; }
+    }
+
+  }
+}
+
 
 
 div.titleComponent  {
@@ -27,7 +49,7 @@ div.titleComponent  {
   height: 116px;
   @include respond-to(small)     { height: 156px; }
   @include respond-to(medium)    { height: 196px; }
-  @include respond-to(large)     { height: 236px; }
+  @include respond-to(large)     { height: 196px; }
 
   >div {  
     text-align: center;
