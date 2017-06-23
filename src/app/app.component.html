@@ -4,53 +4,46 @@
 
 <div class="backgroundLayer"></div>
 
-<div>
+<app-title></app-title>
 
-  <div class="vertical-center">
+
+
+<div class="app-content">
+
+  <div>
 
     <div>
+    <app-setup *ngIf="!isLoadingSetup && !isLoadingResult" [hidden]="currentStep != 1"></app-setup>
+    <app-result  *ngIf="!isLoadingSetup && !isLoadingResult" [hidden]="currentStep != 2"></app-result>
 
-      <app-title></app-title>
-      
-      <div class="setup-loading-block" *ngIf="isLoadingSetup">
-        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-        <span class="sr-only">Loading...</span>
+    <span class="app-footer-space"></span>
+
+    <section class="footerComponent">
+      <div class="footerShareResult" *ngIf="currentStep == 2">
+        <button type="button" class="btn" aria-label="Left Align"><i aria-hidden="true"></i>Compartilhar</button>
       </div>
-
-      <div class="result-loading-block" *ngIf="isLoadingResult">
-        <div class="app-loading-bar">
-          <!--span.width == percentage-->
-          <span></span>
-        </div>
-        <p>Reconhecimento de cena</p>
-        <p>Criando paleta de cores</p>
-        <p>Encontrando sentimentos relacionados</p>
+      <div class="footerActions">
+        <button type="button"><a [href]="urlWhatsYourPic" target="_blank">Gostou? Contribua com esse projeto!</a></button>
+        <button type="button" *ngIf="currentStep == 0"></button>
+        <button type="button" (click)="newSearch()" *ngIf="currentStep == 2">Fazer Nova Busca</button>
+        <button type="button" (click)="findPlaces()" *ngIf="currentStep == 1">Encontrar Locais</button>
       </div>
-
-      <app-upload *ngIf="!isLoadingSetup && !isLoadingResult" [hidden]="currentStep != 0"></app-upload>
-      <app-setup *ngIf="!isLoadingSetup && !isLoadingResult" [hidden]="currentStep != 1"></app-setup>
-      <app-result  *ngIf="!isLoadingSetup && !isLoadingResult" [hidden]="currentStep != 2"></app-result>
-
-      <span class="app-footer-space"></span>
-
-      <section class="footerComponent">
-        <div class="footerShareResult" *ngIf="currentStep == 2">
-          <button type="button" class="btn" aria-label="Left Align"><i aria-hidden="true"></i>Compartilhar</button>
-        </div>
-        <div class="footerActions">
-          <button type="button"><a [href]="urlWhatsYourPic" target="_blank">Gostou? Contribua com esse projeto!</a></button>
-          <button type="button" *ngIf="currentStep == 0"></button>
-          <button type="button" (click)="newSearch()" *ngIf="currentStep == 2">Fazer Nova Busca</button>
-          <button type="button" (click)="findPlaces()" *ngIf="currentStep == 1">Encontrar Locais</button>
-        </div>
-      </section>
+    </section>
 
     </div>
+
   </div>
 
+</div>
+
+<div class="setup-loading-block" *ngIf="isLoadingSetup">
+  <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+  <span class="sr-only">Loading...</span>
 </div>
 
 <div class="dropLayer" *ngIf="currentStep == 0" ng2FileDrop [class.dragging]="dragging" (ng2FileDropHoverStart)="dragFileOverStart()" [ng2FileDropDisableStyles]="true"
   (ng2FileDropHoverEnd)="dragFileOverEnd()" (ng2FileDropFileAccepted)="dragFileAccepted($event)" (ng2FileDropFileRejected)="dragFileRejected($event)"
   [ng2FileDropSupportedFileTypes]="supportedFileTypes" [ng2FileDropMaximumSizeBytes]="maximumFileSizeInBytes">
 </div>
+
+<app-upload *ngIf="!isLoadingSetup && !isLoadingResult" [hidden]="currentStep != 0"></app-upload>

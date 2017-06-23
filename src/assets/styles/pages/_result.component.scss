@@ -1,7 +1,7 @@
 section.resultComponent {
   >div {
     
-    @include respond-to(medium) { margin-top: 35px; }
+    // @include respond-to(medium) { margin-top: 35px; }
 
     &.result-content {
 

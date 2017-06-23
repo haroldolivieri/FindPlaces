@@ -69,13 +69,9 @@ div.backgroundImage {
 }
 
 .vertical-center {
-    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-    min-height: 100vh; /* These two lines are counted as one :-)       */
+    min-height: 100%;
     display: flex;
     align-items: center;
-    padding: 44px 16px 44px 16px;
-    margin-top: -40px;
-    @include respond-to(small) { margin-top: -60px; }
 
     > div {    
         width: 100%;
@@ -84,7 +80,10 @@ div.backgroundImage {
 }
 
 div.setup-loading-block { 
-    @include make-xs-column(12);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
     text-align: center;
     i {
         font-size: em(72) !important;
@@ -92,30 +91,3 @@ div.setup-loading-block {
         text-align: center;
     }
 }
-
-div.result-loading-block {
-    @include make-xs-column(12);
-    text-align: center;
-    >div.app-loading-bar {
-        position: relative;
-        margin: 0 auto;
-        margin-bottom: 16px;
-        height: 35px;
-        width: 100px;
-        border: 2px solid white;
-        @include border-radius(5px);
-        span {
-            position: absolute;
-            left: 0px;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(-45deg, white 25%, transparent 25%, transparent 50%, white 50%, white 75%, transparent 75%, transparent);
-            background-size: 14px 14px;
-        }
-    }
-
-    p {
-        @extend .text-helper;
-        margin: 0px;
-        }
-    }

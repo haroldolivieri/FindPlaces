@@ -5,7 +5,7 @@ section.setupComponent {
     @include make-xs-column(12);
 		text-align: center;
     @include respond-to(medium) { 
-      margin-top: 35px;
+      // margin-top: 35px;
     }
     
     &.setup-loading-content {
